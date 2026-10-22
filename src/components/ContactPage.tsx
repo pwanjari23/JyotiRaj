@@ -94,226 +94,243 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
           </p>
         </div>
 
-        {/* 2. Top Info Cards Row (4 Cards: Phone with WhatsApp, Email, Official Social Profiles, Production Base & Website) */}
+        {/* 2. Top Info Cards Row (4 Sleek Horizontal Rectangular Cards) */}
         <div
           className="contact-info-cards-row"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-            gap: '16px',
+            gap: '14px',
             marginBottom: '28px'
           }}
         >
           {/* Card 1: Phone & WhatsApp */}
-          <div style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '16px',
-            border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 20px',
-            boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '14px',
-            transition: 'all 0.25s ease'
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
               borderRadius: '12px',
-              backgroundColor: '#F5EBEA',
+              border: '1px solid rgba(230, 213, 185, 0.85)',
+              padding: '12px 16px',
+              boxShadow: '0 2px 8px rgba(67, 12, 10, 0.03)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#6B120F',
-              flexShrink: 0
-            }}>
-              <Phone size={20} />
+              gap: '12px',
+              minHeight: '72px',
+              transition: 'all 0.25s ease'
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                backgroundColor: '#F5EBEA',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#6B120F',
+                flexShrink: 0
+              }}
+            >
+              <Phone size={18} />
             </div>
 
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.8px',
-                color: '#8C7D73',
-                textTransform: 'uppercase',
-                marginBottom: '4px'
-              }}>
+              <div
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.8px',
+                  color: '#8C7D73',
+                  textTransform: 'uppercase',
+                  marginBottom: '2px'
+                }}
+              >
                 {language === 'mr' ? 'फोन / व्हॉट्सअॅप' : 'PHONE / WHATSAPP'}
               </div>
 
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: '8px',
-                marginBottom: '4px'
-              }}>
+              <div
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
+                }}
+              >
                 <a
                   href={`tel:${CONTACT_INFO.phoneRaw}`}
                   style={{
-                    fontSize: '15.5px',
+                    fontSize: '14px',
                     fontWeight: 700,
                     color: '#39231B',
-                    textDecoration: 'none'
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap'
                   }}
                   title="Call Jyotiraj Global"
                 >
                   {CONTACT_INFO.phoneDisplay}
                 </a>
 
-                {/* WhatsApp Pill Badge */}
+                {/* Compact WhatsApp Pill */}
                 <button
                   type="button"
                   onClick={handleWhatsAppChat}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '4px',
+                    gap: '3px',
                     backgroundColor: '#E6F4EA',
                     border: '1px solid #B8E2C8',
-                    borderRadius: '20px',
-                    padding: '3px 9px',
+                    borderRadius: '14px',
+                    padding: '2px 7px',
                     color: '#18552E',
-                    fontSize: '11.5px',
-                    fontWeight: 600,
+                    fontSize: '10.5px',
+                    fontWeight: 700,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                    fontFamily: 'var(--font-body)'
+                    fontFamily: 'var(--font-body)',
+                    flexShrink: 0
                   }}
                   title="Chat on WhatsApp"
                 >
-                  <MessageCircle size={13} fill="#18552E" color="#18552E" />
-                  <span>WhatsApp</span>
+                  <MessageCircle size={11} fill="#18552E" color="#18552E" />
+                  <span>Chat</span>
                 </button>
-              </div>
-
-              <div style={{ fontSize: '12px', color: '#78675B' }}>
-                {language === 'mr' ? 'सोम - शनि, सकाळी ९:०० - संध्याकाळी ७:००' : 'Mon - Sat, 9:00 AM - 7:00 PM IST'}
               </div>
             </div>
           </div>
 
-          {/* Card 2: Email Correspondence */}
-          <div style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '16px',
-            border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 20px',
-            boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '14px',
-            transition: 'all 0.25s ease'
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
+          {/* Card 2: Email Enquiries */}
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
               borderRadius: '12px',
-              backgroundColor: '#FAF3E7',
+              border: '1px solid rgba(230, 213, 185, 0.85)',
+              padding: '12px 16px',
+              boxShadow: '0 2px 8px rgba(67, 12, 10, 0.03)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#9F721B',
-              flexShrink: 0
-            }}>
-              <Mail size={20} />
+              gap: '12px',
+              minHeight: '72px',
+              transition: 'all 0.25s ease'
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                backgroundColor: '#FAF3E7',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#9F721B',
+                flexShrink: 0
+              }}
+            >
+              <Mail size={18} />
             </div>
 
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.8px',
-                color: '#8C7D73',
-                textTransform: 'uppercase',
-                marginBottom: '4px'
-              }}>
+              <div
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.8px',
+                  color: '#8C7D73',
+                  textTransform: 'uppercase',
+                  marginBottom: '2px'
+                }}
+              >
                 {language === 'mr' ? 'ईमेल पत्रव्यवहार' : 'EMAIL ENQUIRIES'}
               </div>
 
-              <div style={{ marginBottom: '4px' }}>
+              <div>
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
                   style={{
-                    fontSize: '14.5px',
+                    fontSize: '12.5px',
                     fontWeight: 700,
                     color: '#39231B',
                     textDecoration: 'none',
-                    wordBreak: 'break-all'
+                    display: 'block',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    letterSpacing: '-0.2px'
                   }}
-                  title="Send Email"
+                  title={CONTACT_INFO.email}
                 >
                   {CONTACT_INFO.email}
                 </a>
               </div>
-
-              <div style={{ fontSize: '12px', color: '#78675B' }}>
-                {language === 'mr' ? 'घाऊक आणि किरकोळ ऑर्डर साहाय्य' : 'Direct inbox for retail, gifting & wholesale'}
-              </div>
             </div>
           </div>
 
-          {/* Card 3: Social Media Channels */}
-          <div style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '16px',
-            border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 20px',
-            boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '14px',
-            transition: 'all 0.25s ease'
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
+          {/* Card 3: Follow & Connect */}
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
               borderRadius: '12px',
-              backgroundColor: '#F5EBF3',
+              border: '1px solid rgba(230, 213, 185, 0.85)',
+              padding: '12px 16px',
+              boxShadow: '0 2px 8px rgba(67, 12, 10, 0.03)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#83286B',
-              flexShrink: 0
-            }}>
-              <Share2 size={20} />
+              gap: '12px',
+              minHeight: '72px',
+              transition: 'all 0.25s ease'
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                backgroundColor: '#F5EBF3',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#83286B',
+                flexShrink: 0
+              }}
+            >
+              <Share2 size={18} />
             </div>
 
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.8px',
-                color: '#8C7D73',
-                textTransform: 'uppercase',
-                marginBottom: '6px'
-              }}>
+              <div
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.8px',
+                  color: '#8C7D73',
+                  textTransform: 'uppercase',
+                  marginBottom: '4px'
+                }}
+              >
                 {language === 'mr' ? 'सोशल मीडिया' : 'FOLLOW & CONNECT'}
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <a
                   href={CONTACT_INFO.instagram.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    padding: '4px 8px',
-                    borderRadius: '6px',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
                     backgroundColor: '#FAF3E7',
-                    color: '#39231B',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(201, 149, 46, 0.3)',
+                    transition: 'transform 0.2s'
                   }}
                   title="Instagram @jyotirajglobal"
+                  aria-label="Instagram"
                 >
-                  <InstagramIcon size={13} color="#C13584" />
-                  <span>Instagram</span>
+                  <InstagramIcon size={14} color="#C13584" />
                 </a>
 
                 <a
@@ -321,22 +338,20 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    padding: '4px 8px',
-                    borderRadius: '6px',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
                     backgroundColor: '#FAF3E7',
-                    color: '#39231B',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(201, 149, 46, 0.3)',
+                    transition: 'transform 0.2s'
                   }}
                   title="Facebook Jyotiraj Global"
+                  aria-label="Facebook"
                 >
-                  <FacebookIcon size={13} color="#1877F2" />
-                  <span>Facebook</span>
+                  <FacebookIcon size={14} color="#1877F2" />
                 </a>
 
                 <a
@@ -344,84 +359,89 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '4px',
-                    padding: '4px 8px',
-                    borderRadius: '6px',
+                    width: '28px',
+                    height: '28px',
+                    borderRadius: '50%',
                     backgroundColor: '#FAF3E7',
-                    color: '#39231B',
-                    fontSize: '12px',
-                    fontWeight: 600,
-                    textDecoration: 'none',
-                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1px solid rgba(201, 149, 46, 0.3)',
+                    transition: 'transform 0.2s'
                   }}
                   title="LinkedIn Jyotiraj Global"
+                  aria-label="LinkedIn"
                 >
-                  <LinkedinIcon size={13} color="#0A66C2" />
-                  <span>LinkedIn</span>
+                  <LinkedinIcon size={14} color="#0A66C2" />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Card 4: Official Website & Base */}
-          <div style={{
-            backgroundColor: '#FFFFFF',
-            borderRadius: '16px',
-            border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 20px',
-            boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '14px',
-            transition: 'all 0.25s ease'
-          }}>
-            <div style={{
-              width: '44px',
-              height: '44px',
+          {/* Card 4: Official Portal */}
+          <div
+            style={{
+              backgroundColor: '#FFFFFF',
               borderRadius: '12px',
-              backgroundColor: '#EAF3ED',
+              border: '1px solid rgba(230, 213, 185, 0.85)',
+              padding: '12px 16px',
+              boxShadow: '0 2px 8px rgba(67, 12, 10, 0.03)',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              color: '#18552E',
-              flexShrink: 0
-            }}>
-              <Globe size={20} />
+              gap: '12px',
+              minHeight: '72px',
+              transition: 'all 0.25s ease'
+            }}
+          >
+            <div
+              style={{
+                width: '38px',
+                height: '38px',
+                borderRadius: '10px',
+                backgroundColor: '#EAF3ED',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#18552E',
+                flexShrink: 0
+              }}
+            >
+              <Globe size={18} />
             </div>
 
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{
-                fontSize: '11px',
-                fontWeight: 700,
-                letterSpacing: '0.8px',
-                color: '#8C7D73',
-                textTransform: 'uppercase',
-                marginBottom: '4px'
-              }}>
+              <div
+                style={{
+                  fontSize: '10px',
+                  fontWeight: 700,
+                  letterSpacing: '0.8px',
+                  color: '#8C7D73',
+                  textTransform: 'uppercase',
+                  marginBottom: '2px'
+                }}
+              >
                 {language === 'mr' ? 'अधिकृत संकेतस्थळ' : 'OFFICIAL PORTAL'}
               </div>
 
-              <div style={{ marginBottom: '4px' }}>
+              <div>
                 <a
                   href={CONTACT_INFO.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    fontSize: '14.5px',
+                    fontSize: '13.5px',
                     fontWeight: 700,
                     color: '#18552E',
-                    textDecoration: 'none'
+                    textDecoration: 'none',
+                    display: 'block',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}
                   title="Visit Jyotiraj Global Website"
                 >
                   {CONTACT_INFO.websiteDisplay}
                 </a>
-              </div>
-
-              <div style={{ fontSize: '12px', color: '#78675B' }}>
-                Jyotiraj Global Company – Gruh Udyog, Maharashtra
               </div>
             </div>
           </div>
