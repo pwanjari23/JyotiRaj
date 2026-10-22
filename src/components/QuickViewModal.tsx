@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, ShoppingBag, MessageCircle, ArrowRight, Check } from 'lucide-react';
 import { Product, PageView, Language, Currency } from '../types';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle } from '../utils/translations';
 
@@ -44,7 +45,7 @@ export const QuickViewModal: React.FC<QuickViewModalProps> = ({
     const text = encodeURIComponent(
       `Hello Jyotiraj Global! I am interested in ${quantity}x ${prodName} (${packSize}) for ${formatted}. Please provide stock details.`
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (

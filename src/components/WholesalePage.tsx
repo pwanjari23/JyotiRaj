@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PageView, Language } from '../types';
 import { CheckCircle2, ArrowRight, MessageCircle } from 'lucide-react';
+import { CONTACT_INFO } from '../data/contactInfo';
 
 interface WholesalePageProps {
   onNavigate: (page: PageView) => void;
@@ -55,7 +56,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
     const text = encodeURIComponent(
       `Hello Jyotiraj Global! I represent ${formData.companyName || 'my company'} and would like to discuss a wholesale order for traditional sweets.`
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (
@@ -243,7 +244,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                     type="tel"
                     required
                     className="wholesale-form-input"
-                    placeholder="+91 9876543210"
+                    placeholder="+91 7304314338"
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   />

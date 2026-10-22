@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Product, PageView, Language, Currency } from '../types';
 import { PRODUCTS } from '../data/products';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle } from '../utils/translations';
 
@@ -53,7 +54,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     const text = encodeURIComponent(
       `Hello Jyotiraj Global Company! I would like to order "${prodName}" in ${selectedPackSize} pack (Qty: ${quantity}, Total: ${formattedTotal}). Please confirm availability.`
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (

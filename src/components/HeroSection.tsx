@@ -8,6 +8,7 @@ import {
   Globe2
 } from 'lucide-react';
 import { PageView, Language } from '../types';
+import { CONTACT_INFO } from '../data/contactInfo';
 
 interface HeroSectionProps {
   onNavigate: (page: PageView, filter?: string) => void;
@@ -19,7 +20,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
     const text = encodeURIComponent(
       'Hello Jyotiraj Global Company! I would like to order authentic dry fruit sweets and explore your royal collection.'
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   const trustBadges = [

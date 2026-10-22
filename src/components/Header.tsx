@@ -3,6 +3,8 @@ import { Search, ShoppingBag, Menu, X, ArrowRight, MessageCircle } from 'lucide-
 import { PageView, Language } from '../types';
 import { t } from '../utils/translations';
 
+import { CONTACT_INFO } from '../data/contactInfo';
+
 interface HeaderProps {
   currentPage: PageView;
   onNavigate: (page: PageView, productSlug?: string) => void;
@@ -26,7 +28,7 @@ export const Header: React.FC<HeaderProps> = ({
     const message = encodeURIComponent(
       'Hello Jyotiraj Global Company! I would like to inquire about your authentic traditional dry fruit sweets & laddus.'
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${message}`, '_blank');
   };
 
   return (

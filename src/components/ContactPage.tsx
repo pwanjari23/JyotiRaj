@@ -3,14 +3,17 @@ import { PageView, Language } from '../types';
 import {
   Mail,
   Phone,
-  MapPin,
   MessageCircle,
   Send,
   CheckCircle2,
   Navigation,
   Plus,
-  Minus
+  Minus,
+  Globe,
+  Share2
 } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon } from './SocialIcons';
+import { CONTACT_INFO } from '../data/contactInfo';
 
 interface ContactPageProps {
   onNavigate: (page: PageView) => void;
@@ -43,7 +46,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
     const text = encodeURIComponent(
       'Hello Jyotiraj Global Company! I have a question regarding your dry fruit sweets, laddus, and ordering.'
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   const handleDirectionsClick = () => {
@@ -91,13 +94,13 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
           </p>
         </div>
 
-        {/* 2. Top Info Cards Row (3 Cards: Phone with WhatsApp, Email, Manufacturing Base) */}
+        {/* 2. Top Info Cards Row (4 Cards: Phone with WhatsApp, Email, Official Social Profiles, Production Base & Website) */}
         <div
           className="contact-info-cards-row"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '20px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gap: '16px',
             marginBottom: '28px'
           }}
         >
@@ -106,16 +109,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
             backgroundColor: '#FFFFFF',
             borderRadius: '16px',
             border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 24px',
+            padding: '20px 20px',
             boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
             display: 'flex',
             alignItems: 'flex-start',
-            gap: '16px',
+            gap: '14px',
             transition: 'all 0.25s ease'
           }}>
             <div style={{
-              width: '46px',
-              height: '46px',
+              width: '44px',
+              height: '44px',
               borderRadius: '12px',
               backgroundColor: '#F5EBEA',
               display: 'flex',
@@ -136,7 +139,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                 textTransform: 'uppercase',
                 marginBottom: '4px'
               }}>
-                {language === 'mr' ? 'फोन / चौकशी' : 'PHONE / INQUIRIES'}
+                {language === 'mr' ? 'फोन / व्हॉट्सअॅप' : 'PHONE / WHATSAPP'}
               </div>
 
               <div style={{
@@ -147,15 +150,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                 marginBottom: '4px'
               }}>
                 <a
-                  href="tel:+919876543210"
+                  href={`tel:${CONTACT_INFO.phoneRaw}`}
                   style={{
-                    fontSize: '16px',
+                    fontSize: '15.5px',
                     fontWeight: 700,
                     color: '#39231B',
                     textDecoration: 'none'
                   }}
+                  title="Call Jyotiraj Global"
                 >
-                  +91 98765 43210
+                  {CONTACT_INFO.phoneDisplay}
                 </a>
 
                 {/* WhatsApp Pill Badge */}
@@ -165,34 +169,26 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: '5px',
+                    gap: '4px',
                     backgroundColor: '#E6F4EA',
                     border: '1px solid #B8E2C8',
                     borderRadius: '20px',
-                    padding: '3px 10px',
+                    padding: '3px 9px',
                     color: '#18552E',
-                    fontSize: '12px',
+                    fontSize: '11.5px',
                     fontWeight: 600,
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
                     fontFamily: 'var(--font-body)'
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#D4EDDA';
-                    e.currentTarget.style.borderColor = '#18552E';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#E6F4EA';
-                    e.currentTarget.style.borderColor = '#B8E2C8';
-                  }}
-                  title="Order or Chat on WhatsApp"
+                  title="Chat on WhatsApp"
                 >
                   <MessageCircle size={13} fill="#18552E" color="#18552E" />
                   <span>WhatsApp</span>
                 </button>
               </div>
 
-              <div style={{ fontSize: '12.5px', color: '#78675B' }}>
+              <div style={{ fontSize: '12px', color: '#78675B' }}>
                 {language === 'mr' ? 'सोम - शनि, सकाळी ९:०० - संध्याकाळी ७:००' : 'Mon - Sat, 9:00 AM - 7:00 PM IST'}
               </div>
             </div>
@@ -203,16 +199,16 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
             backgroundColor: '#FFFFFF',
             borderRadius: '16px',
             border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 24px',
+            padding: '20px 20px',
             boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
             display: 'flex',
             alignItems: 'flex-start',
-            gap: '16px',
+            gap: '14px',
             transition: 'all 0.25s ease'
           }}>
             <div style={{
-              width: '46px',
-              height: '46px',
+              width: '44px',
+              height: '44px',
               borderRadius: '12px',
               backgroundColor: '#FAF3E7',
               display: 'flex',
@@ -233,45 +229,157 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                 textTransform: 'uppercase',
                 marginBottom: '4px'
               }}>
-                {language === 'mr' ? 'ईमेल पत्रव्यवहार' : 'EMAIL CORRESPONDENCE'}
+                {language === 'mr' ? 'ईमेल पत्रव्यवहार' : 'EMAIL ENQUIRIES'}
               </div>
 
               <div style={{ marginBottom: '4px' }}>
                 <a
-                  href="mailto:orders@jyotirajglobal.com"
+                  href={`mailto:${CONTACT_INFO.email}`}
                   style={{
-                    fontSize: '15.5px',
+                    fontSize: '14.5px',
                     fontWeight: 700,
                     color: '#39231B',
                     textDecoration: 'none',
                     wordBreak: 'break-all'
                   }}
+                  title="Send Email"
                 >
-                  orders@jyotirajglobal.com
+                  {CONTACT_INFO.email}
                 </a>
               </div>
 
-              <div style={{ fontSize: '12.5px', color: '#78675B' }}>
-                {language === 'mr' ? 'घाऊक आणि किरकोळ ऑर्डर साहाय्य' : 'For wholesale & retail order assistance'}
+              <div style={{ fontSize: '12px', color: '#78675B' }}>
+                {language === 'mr' ? 'घाऊक आणि किरकोळ ऑर्डर साहाय्य' : 'Direct inbox for retail, gifting & wholesale'}
               </div>
             </div>
           </div>
 
-          {/* Card 3: Manufacturing Base */}
+          {/* Card 3: Social Media Channels */}
           <div style={{
             backgroundColor: '#FFFFFF',
             borderRadius: '16px',
             border: '1px solid rgba(230, 213, 185, 0.75)',
-            padding: '20px 24px',
+            padding: '20px 20px',
             boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
             display: 'flex',
             alignItems: 'flex-start',
-            gap: '16px',
+            gap: '14px',
             transition: 'all 0.25s ease'
           }}>
             <div style={{
-              width: '46px',
-              height: '46px',
+              width: '44px',
+              height: '44px',
+              borderRadius: '12px',
+              backgroundColor: '#F5EBF3',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#83286B',
+              flexShrink: 0
+            }}>
+              <Share2 size={20} />
+            </div>
+
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{
+                fontSize: '11px',
+                fontWeight: 700,
+                letterSpacing: '0.8px',
+                color: '#8C7D73',
+                textTransform: 'uppercase',
+                marginBottom: '6px'
+              }}>
+                {language === 'mr' ? 'सोशल मीडिया' : 'FOLLOW & CONNECT'}
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                <a
+                  href={CONTACT_INFO.instagram.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '4px 8px',
+                    borderRadius: '6px',
+                    backgroundColor: '#FAF3E7',
+                    color: '#39231B',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                  }}
+                  title="Instagram @jyotirajglobal"
+                >
+                  <InstagramIcon size={13} color="#C13584" />
+                  <span>Instagram</span>
+                </a>
+
+                <a
+                  href={CONTACT_INFO.facebook.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '4px 8px',
+                    borderRadius: '6px',
+                    backgroundColor: '#FAF3E7',
+                    color: '#39231B',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                  }}
+                  title="Facebook Jyotiraj Global"
+                >
+                  <FacebookIcon size={13} color="#1877F2" />
+                  <span>Facebook</span>
+                </a>
+
+                <a
+                  href={CONTACT_INFO.linkedin.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '4px 8px',
+                    borderRadius: '6px',
+                    backgroundColor: '#FAF3E7',
+                    color: '#39231B',
+                    fontSize: '12px',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                    border: '1px solid rgba(201, 149, 46, 0.25)'
+                  }}
+                  title="LinkedIn Jyotiraj Global"
+                >
+                  <LinkedinIcon size={13} color="#0A66C2" />
+                  <span>LinkedIn</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 4: Official Website & Base */}
+          <div style={{
+            backgroundColor: '#FFFFFF',
+            borderRadius: '16px',
+            border: '1px solid rgba(230, 213, 185, 0.75)',
+            padding: '20px 20px',
+            boxShadow: '0 2px 10px rgba(67, 12, 10, 0.03)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '14px',
+            transition: 'all 0.25s ease'
+          }}>
+            <div style={{
+              width: '44px',
+              height: '44px',
               borderRadius: '12px',
               backgroundColor: '#EAF3ED',
               display: 'flex',
@@ -280,7 +388,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
               color: '#18552E',
               flexShrink: 0
             }}>
-              <MapPin size={20} />
+              <Globe size={20} />
             </div>
 
             <div style={{ flex: 1, minWidth: 0 }}>
@@ -292,21 +400,28 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                 textTransform: 'uppercase',
                 marginBottom: '4px'
               }}>
-                {language === 'mr' ? 'उत्पादन केंद्र' : 'MANUFACTURING BASE'}
+                {language === 'mr' ? 'अधिकृत संकेतस्थळ' : 'OFFICIAL PORTAL'}
               </div>
 
-              <div style={{
-                fontSize: '15px',
-                fontWeight: 700,
-                color: '#39231B',
-                marginBottom: '4px',
-                lineHeight: 1.3
-              }}>
-                Jyotiraj Global Company – Gruh Udyog
+              <div style={{ marginBottom: '4px' }}>
+                <a
+                  href={CONTACT_INFO.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: '14.5px',
+                    fontWeight: 700,
+                    color: '#18552E',
+                    textDecoration: 'none'
+                  }}
+                  title="Visit Jyotiraj Global Website"
+                >
+                  {CONTACT_INFO.websiteDisplay}
+                </a>
               </div>
 
-              <div style={{ fontSize: '12.5px', color: '#78675B' }}>
-                Maharashtra, India
+              <div style={{ fontSize: '12px', color: '#78675B' }}>
+                Jyotiraj Global Company – Gruh Udyog, Maharashtra
               </div>
             </div>
           </div>

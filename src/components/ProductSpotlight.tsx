@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, CheckCircle2, MessageCircle } from 'lucide-react';
 import { PageView, Language } from '../types';
+import { CONTACT_INFO } from '../data/contactInfo';
 
 interface ProductSpotlightProps {
   onNavigate: (page: PageView, productSlug?: string) => void;
@@ -12,7 +13,7 @@ export const ProductSpotlight: React.FC<ProductSpotlightProps> = ({ onNavigate, 
     const text = encodeURIComponent(
       'Hello Jyotiraj Global! I am interested in your Dry Fruits Khajur Barfi and Roll assortments. Please provide details.'
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (

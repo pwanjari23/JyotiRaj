@@ -1,6 +1,7 @@
 import React from 'react';
 import { Sparkles, Truck, Globe2, Leaf, ShieldCheck } from 'lucide-react';
-import { InstagramIcon, FacebookIcon, YoutubeIcon } from './SocialIcons';
+import { InstagramIcon, FacebookIcon, LinkedinIcon } from './SocialIcons';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { Language, Currency } from '../types';
 import { t } from '../utils/translations';
 
@@ -128,14 +129,35 @@ export const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
 
           {/* Social Icons */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }} className="announcement-socials">
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', display: 'flex' }} aria-label="Instagram">
+            <a
+              href={CONTACT_INFO.instagram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'inherit', display: 'flex' }}
+              aria-label="Instagram @jyotirajglobal"
+              title="Instagram @jyotirajglobal"
+            >
               <InstagramIcon size={14} color="var(--color-warm-ivory)" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', display: 'flex' }} aria-label="Facebook">
+            <a
+              href={CONTACT_INFO.facebook.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'inherit', display: 'flex' }}
+              aria-label="Facebook Jyotiraj Global"
+              title="Facebook Jyotiraj Global"
+            >
               <FacebookIcon size={14} color="var(--color-warm-ivory)" />
             </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', display: 'flex' }} aria-label="YouTube">
-              <YoutubeIcon size={14} color="var(--color-warm-ivory)" />
+            <a
+              href={CONTACT_INFO.linkedin.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'inherit', display: 'flex' }}
+              aria-label="LinkedIn Jyotiraj Global"
+              title="LinkedIn Jyotiraj Global"
+            >
+              <LinkedinIcon size={14} color="var(--color-warm-ivory)" />
             </a>
           </div>
         </div>

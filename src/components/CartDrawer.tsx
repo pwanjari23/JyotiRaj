@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Trash2, ShoppingBag, ArrowRight, Check, MessageCircle } from 'lucide-react';
 import { CartItem, Currency, Language } from '../types';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName } from '../utils/translations';
 
@@ -73,7 +74,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
       `*Grand Total:* ${formatPrice(grandTotal, currency)}\n\n` +
       `Please confirm stock and dispatch schedule.`
     );
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (

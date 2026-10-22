@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ShoppingBag, MessageCircle, Eye, Check } from 'lucide-react';
 import { Product, PageView, Language, Currency } from '../types';
 import { PRODUCTS, CATEGORIES } from '../data/products';
+import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle, t } from '../utils/translations';
 
@@ -59,7 +60,7 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
     const message = encodeURIComponent(
       `Hello Jyotiraj Global Company! I would like to order "${prodName}" in ${size} pack (${formatted}). Please confirm availability.`
     );
-    window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${message}`, '_blank');
   };
 
   return (

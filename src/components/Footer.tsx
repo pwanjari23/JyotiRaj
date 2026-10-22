@@ -1,8 +1,9 @@
 import React from 'react';
 import { PageView, Language } from '../types';
 import { PRODUCTS } from '../data/products';
-import { MessageCircle, ArrowUp } from 'lucide-react';
-import { InstagramIcon, FacebookIcon, YoutubeIcon } from './SocialIcons';
+import { MessageCircle, ArrowUp, Phone, Mail, Globe } from 'lucide-react';
+import { InstagramIcon, FacebookIcon, LinkedinIcon } from './SocialIcons';
+import { CONTACT_INFO } from '../data/contactInfo';
 
 interface FooterProps {
   onNavigate: (page: PageView, productSlug?: string) => void;
@@ -18,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
 
   const handleWhatsAppClick = () => {
     const text = encodeURIComponent('Hello Jyotiraj Global Company! I would like to get in touch.');
-    window.open(`https://wa.me/919876543210?text=${text}`, '_blank');
+    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (
@@ -89,44 +90,87 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
 
             {/* Social Icons */}
             <div style={{ display: 'flex', gap: '8px' }}>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(255,255,255,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-warm-ivory)',
-                border: '1px solid rgba(201, 149, 46, 0.3)'
-              }} aria-label="Instagram">
-                <InstagramIcon size={14} color="var(--color-warm-ivory)" />
+              <a
+                href={CONTACT_INFO.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--color-warm-ivory)',
+                  border: '1px solid rgba(201, 149, 46, 0.3)',
+                  transition: 'background-color 0.2s'
+                }}
+                aria-label="Instagram @jyotirajglobal"
+                title="Instagram @jyotirajglobal"
+              >
+                <InstagramIcon size={15} color="var(--color-warm-ivory)" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(255,255,255,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-warm-ivory)',
-                border: '1px solid rgba(201, 149, 46, 0.3)'
-              }} aria-label="Facebook">
-                <FacebookIcon size={14} color="var(--color-warm-ivory)" />
+              <a
+                href={CONTACT_INFO.facebook.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--color-warm-ivory)',
+                  border: '1px solid rgba(201, 149, 46, 0.3)',
+                  transition: 'background-color 0.2s'
+                }}
+                aria-label="Facebook Jyotiraj Global"
+                title="Facebook Jyotiraj Global"
+              >
+                <FacebookIcon size={15} color="var(--color-warm-ivory)" />
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" style={{
-                width: '30px',
-                height: '30px',
-                borderRadius: '50%',
-                backgroundColor: 'rgba(255,255,255,0.08)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--color-warm-ivory)',
-                border: '1px solid rgba(201, 149, 46, 0.3)'
-              }} aria-label="YouTube">
-                <YoutubeIcon size={14} color="var(--color-warm-ivory)" />
+              <a
+                href={CONTACT_INFO.linkedin.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--color-warm-ivory)',
+                  border: '1px solid rgba(201, 149, 46, 0.3)',
+                  transition: 'background-color 0.2s'
+                }}
+                aria-label="LinkedIn Jyotiraj Global"
+                title="LinkedIn Jyotiraj Global"
+              >
+                <LinkedinIcon size={15} color="var(--color-warm-ivory)" />
+              </a>
+              <a
+                href={`mailto:${CONTACT_INFO.email}`}
+                style={{
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(255,255,255,0.08)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--color-warm-ivory)',
+                  border: '1px solid rgba(201, 149, 46, 0.3)',
+                  transition: 'background-color 0.2s'
+                }}
+                aria-label={`Email ${CONTACT_INFO.email}`}
+                title={`Email ${CONTACT_INFO.email}`}
+              >
+                <Mail size={15} color="var(--color-warm-ivory)" />
               </a>
             </div>
           </div>
@@ -229,9 +273,55 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
               Direct Connect
             </h4>
             
-            <p style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.75)', lineHeight: 1.4, marginBottom: '10px' }}>
-              Speak directly with our Gruh Udyog team for custom packing, retail inquiries, or bulk orders.
-            </p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '14px', fontSize: '13px' }}>
+              <a
+                href={`tel:${CONTACT_INFO.phoneRaw}`}
+                style={{
+                  color: 'rgba(255,255,255,0.9)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  textDecoration: 'none'
+                }}
+                title="Call Phone Enquiries"
+              >
+                <Phone size={14} color="var(--color-antique-gold-light)" />
+                <span style={{ fontWeight: 600 }}>{CONTACT_INFO.phoneDisplay}</span>
+              </a>
+
+              <a
+                href={`mailto:${CONTACT_INFO.email}`}
+                style={{
+                  color: 'rgba(255,255,255,0.85)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  textDecoration: 'none',
+                  wordBreak: 'break-all'
+                }}
+                title="Email Us"
+              >
+                <Mail size={14} color="var(--color-antique-gold-light)" />
+                <span style={{ fontSize: '12.5px' }}>{CONTACT_INFO.email}</span>
+              </a>
+
+              <a
+                href={CONTACT_INFO.websiteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: 'rgba(255,255,255,0.85)',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  textDecoration: 'none'
+                }}
+                title="Visit Website"
+              >
+                <Globe size={14} color="var(--color-antique-gold-light)" />
+                <span style={{ fontSize: '12.5px' }}>{CONTACT_INFO.websiteDisplay}</span>
+              </a>
+            </div>
 
             <button
               onClick={handleWhatsAppClick}
