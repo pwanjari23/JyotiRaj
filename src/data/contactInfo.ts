@@ -1,7 +1,11 @@
 export const CONTACT_INFO = {
-  // Phone & WhatsApp
-  phoneDisplay: '+91 7304314338',
-  phoneRaw: '+917304314338',
+  // Voice / Phone Call
+  phoneDisplay: '+91 7020572698',
+  phoneRaw: '+917020572698',
+  
+  // WhatsApp
+  whatsappDisplay: '+91 7304314338',
+  whatsappNumber: '7304314338',
   whatsappRaw: '917304314338',
   
   // Website

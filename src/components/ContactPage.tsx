@@ -146,7 +146,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                   marginBottom: '2px'
                 }}
               >
-                {language === 'mr' ? 'फोन / व्हॉट्सअॅप' : 'PHONE / WHATSAPP'}
+                {language === 'mr' ? 'कॉल / व्हॉट्सअॅप' : 'CALL / WHATSAPP'}
               </div>
 
               <div
@@ -165,7 +165,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                     textDecoration: 'none',
                     whiteSpace: 'nowrap'
                   }}
-                  title="Call Jyotiraj Global"
+                  title={`Call ${CONTACT_INFO.phoneDisplay}`}
                 >
                   {CONTACT_INFO.phoneDisplay}
                 </a>
@@ -190,10 +190,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, language }
                     fontFamily: 'var(--font-body)',
                     flexShrink: 0
                   }}
-                  title="Chat on WhatsApp"
+                  title={`WhatsApp: ${CONTACT_INFO.whatsappDisplay}`}
                 >
                   <MessageCircle size={11} fill="#18552E" color="#18552E" />
-                  <span>Chat</span>
+                  <span>WhatsApp</span>
                 </button>
               </div>
             </div>

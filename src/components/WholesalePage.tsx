@@ -244,7 +244,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                     type="tel"
                     required
                     className="wholesale-form-input"
-                    placeholder="+91 7304314338"
+                    placeholder="+91 7020572698"
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   />
