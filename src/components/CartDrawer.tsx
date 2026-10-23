@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Trash2, ShoppingBag, ArrowRight, Check, MessageCircle } from 'lucide-react';
+import { X, Trash2, ShoppingBag, ArrowRight, Check, MessageCircle, Loader2, AlertCircle } from 'lucide-react';
 import { CartItem, Currency, Language } from '../types';
 import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
@@ -28,14 +28,30 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 }) => {
   const [checkoutStep, setCheckoutStep] = useState<'cart' | 'checkout' | 'success'>('cart');
   const [orderReference, setOrderReference] = useState<string>('JR-529184');
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [checkoutData, setCheckoutData] = useState({
     name: '',
     phone: '',
     address: '',
     city: '',
     pincode: '',
-    paymentMethod: 'Cash on Delivery (COD) / WhatsApp Confirmation',
+    paymentMethod: 'Cash on Delivery (COD) / Direct Confirmation',
   });
+
+  // Whenever new items are in cart or drawer is opened with items, reset step from success to cart
+  React.useEffect(() => {
+    if (cartItems.length > 0 && checkoutStep === 'success') {
+      setCheckoutStep('cart');
+    }
+  }, [cartItems.length, checkoutStep]);
+
+  const handleClose = () => {
+    if (checkoutStep === 'success') {
+      setCheckoutStep('cart');
+    }
+    onClose();
+  };
 
   if (!isOpen) return null;
 
@@ -48,14 +64,74 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   const shippingFee = subtotal >= freeShippingThreshold || subtotal === 0 ? 0 : 80;
   const grandTotal = subtotal + shippingFee;
 
-  const handleCheckoutSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!checkoutData.name || !checkoutData.phone || !checkoutData.address) {
-      alert('Please fill in required checkout details.');
+  const handleCheckoutSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    setErrorMessage(null);
+
+    if (!checkoutData.name.trim() || !checkoutData.phone.trim() || !checkoutData.address.trim() || !checkoutData.city.trim()) {
+      setErrorMessage('Please fill in all required fields (Name, Phone, Address, City).');
       return;
     }
-    setOrderReference(`JR-${Math.floor(100000 + Math.random() * 900000)}`);
-    setCheckoutStep('success');
+
+    if (cartItems.length === 0) {
+      setErrorMessage('Your cart is empty. Please add items before checking out.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const itemsPayload = cartItems.map((item) => ({
+        id: item.product.id,
+        name: getProductName(item.product, language),
+        packSize: item.packSize,
+        quantity: item.quantity,
+        unitPrice: item.product.provisionalPrice[item.packSize],
+        totalPrice: item.product.provisionalPrice[item.packSize] * item.quantity,
+        image: item.product.image,
+      }));
+
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: itemsPayload,
+          subtotal,
+          shippingFee,
+          grandTotal,
+          customerDetails: {
+            name: checkoutData.name.trim(),
+            phone: checkoutData.phone.trim(),
+            address: checkoutData.address.trim(),
+            city: checkoutData.city.trim(),
+            pincode: checkoutData.pincode.trim(),
+            paymentMethod: checkoutData.paymentMethod,
+          },
+        }),
+      });
+
+      let data: any = null;
+      try {
+        data = await res.json();
+      } catch {
+        // Fallback if response is empty or HTML (e.g. 404 or proxy error)
+      }
+
+      if (!res.ok || !data?.success) {
+        throw new Error(
+          data?.error || `Server returned error (${res.status}). Please make sure you are running the Next.js dev server on http://localhost:3000.`
+        );
+      }
+
+      setOrderReference(data.orderReference || `JR-${Date.now().toString(36).toUpperCase()}`);
+      setCheckoutStep('success');
+      onClearCart();
+    } catch (err) {
+      console.error('Checkout error:', err);
+      setErrorMessage(err instanceof Error ? err.message : 'An error occurred while submitting your order.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsAppCheckout = () => {
@@ -116,7 +192,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           </div>
 
           <button
-            onClick={onClose}
+            onClick={handleClose}
             style={{
               background: 'none',
               border: 'none',
@@ -246,6 +322,24 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
           {/* STEP 2: CHECKOUT FORM */}
           {checkoutStep === 'checkout' && (
             <form onSubmit={handleCheckoutSubmit}>
+              {errorMessage && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '10px 14px',
+                  backgroundColor: 'rgba(220, 38, 38, 0.1)',
+                  border: '1px solid rgba(220, 38, 38, 0.3)',
+                  borderRadius: '8px',
+                  color: '#b91c1c',
+                  fontSize: '13px',
+                  marginBottom: '14px'
+                }}>
+                  <AlertCircle size={16} style={{ flexShrink: 0 }} />
+                  <span>{errorMessage}</span>
+                </div>
+              )}
+
               <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                 <div>
                   <label className="form-label">Full Name *</label>
@@ -310,14 +404,22 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                 <div>
                   <label className="form-label">Payment Mode</label>
-                  <select
-                    className="form-input"
-                    value={checkoutData.paymentMethod}
-                    onChange={(e) => setCheckoutData({ ...checkoutData, paymentMethod: e.target.value })}
-                  >
-                    <option value="Cash on Delivery (COD) / WhatsApp Confirmation">Cash on Delivery (COD) / WhatsApp Confirmation</option>
-                    <option value="Direct UPI / Bank Transfer">Direct UPI / Bank Transfer</option>
-                  </select>
+                  <div style={{
+                    backgroundColor: 'rgba(201, 149, 46, 0.08)',
+                    border: '1.5px solid rgba(201, 149, 46, 0.4)',
+                    borderRadius: '8px',
+                    padding: '12px 14px',
+                    fontSize: '13px',
+                    color: 'var(--color-espresso-brown)',
+                    lineHeight: 1.45
+                  }}>
+                    <div style={{ fontWeight: 700, color: 'var(--color-royal-maroon)', marginBottom: '4px' }}>
+                      Cash on Delivery (COD) / Direct Confirmation
+                    </div>
+                    <div style={{ fontSize: '12px', color: 'var(--color-muted-text)', lineHeight: 1.4 }}>
+                      <strong>Note:</strong> We have not implemented an online payment gateway yet—we are implementing it shortly. No advance online payment is required; our team will confirm your order and schedule dispatch directly.
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -359,7 +461,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               }}>
                 <div><strong>Order Reference:</strong> #{orderReference}</div>
                 <div style={{ marginTop: '4px' }}><strong>Shipping to:</strong> {checkoutData.address}, {checkoutData.city}</div>
-                <div style={{ marginTop: '4px' }}><strong>Payment:</strong> {checkoutData.paymentMethod}</div>
+                <div style={{ marginTop: '4px' }}>
+                  <strong>Payment:</strong> Cash on Delivery (COD) / Direct Confirmation
+                  <div style={{ fontSize: '11.5px', color: 'var(--color-muted-text)', marginTop: '2px' }}>
+                    * Online payment gateway will be implemented shortly.
+                  </div>
+                </div>
               </div>
 
               <button
@@ -375,7 +482,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                 onClick={() => {
                   onClearCart();
                   setCheckoutStep('cart');
-                  onClose();
+                  handleClose();
                 }}
                 className="btn btn-secondary btn-sm"
               >
@@ -420,25 +527,14 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
 
             {checkoutStep === 'cart' ? (
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button
-                  onClick={handleWhatsAppCheckout}
-                  className="btn btn-whatsapp"
-                  style={{ flex: 1, justifyContent: 'center', padding: '12px' }}
-                >
-                  <MessageCircle size={18} />
-                  <span>Order via WhatsApp</span>
-                </button>
-
-                <button
-                  onClick={() => setCheckoutStep('checkout')}
-                  className="btn btn-primary"
-                  style={{ flex: 1, justifyContent: 'center', padding: '12px' }}
-                >
-                  <span>Checkout</span>
-                  <ArrowRight size={16} />
-                </button>
-              </div>
+              <button
+                onClick={() => setCheckoutStep('checkout')}
+                className="btn btn-primary"
+                style={{ width: '100%', justifyContent: 'center', padding: '13px', fontSize: '15px' }}
+              >
+                <span>Proceed to Checkout</span>
+                <ArrowRight size={16} />
+              </button>
             ) : (
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button
@@ -452,11 +548,19 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
                 <button
                   type="button"
-                  onClick={handleCheckoutSubmit}
+                  onClick={() => handleCheckoutSubmit()}
+                  disabled={isSubmitting}
                   className="btn btn-primary"
-                  style={{ flex: 1, justifyContent: 'center', padding: '12px' }}
+                  style={{ flex: 1, justifyContent: 'center', padding: '12px', opacity: isSubmitting ? 0.7 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
                 >
-                  <span>Place Order ({formatPrice(grandTotal, currency)})</span>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>Sending Order...</span>
+                    </>
+                  ) : (
+                    <span>Place Order ({formatPrice(grandTotal, currency)})</span>
+                  )}
                 </button>
               </div>
             )}

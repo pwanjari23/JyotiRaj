@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageView, Language } from '../types';
-import { CheckCircle2, ArrowRight, MessageCircle } from 'lucide-react';
+import { CheckCircle2, ArrowRight, MessageCircle, Loader2, AlertCircle } from 'lucide-react';
 import { CONTACT_INFO } from '../data/contactInfo';
 
 interface WholesalePageProps {
@@ -23,6 +23,9 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [submittedRef, setSubmittedRef] = useState<string>('');
 
   const sweetProducts = [
     { id: 'prod-1', title: 'Premium Special Dry Fruits Laddu' },
@@ -43,13 +46,42 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.businessEmail || !formData.phoneNumber) {
-      alert(language === 'mr' ? 'कृपया आपले नाव, ईमेल आणि फोन नंबर भरा.' : 'Please fill in your name, email, and phone number.');
+    setErrorMsg(null);
+
+    if (!formData.fullName.trim() || !formData.businessEmail.trim() || !formData.phoneNumber.trim()) {
+      setErrorMsg(language === 'mr' ? 'कृपया आपले नाव, ईमेल आणि फोन नंबर भरा.' : 'Please fill in your name, email, and phone number.');
       return;
     }
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/wholesale', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      let data: any = null;
+      try {
+        data = await res.json();
+      } catch {
+        // Fallback for non-JSON response
+      }
+
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || 'Failed to submit wholesale request. Please try again.');
+      }
+
+      setSubmittedRef(data.referenceId || '');
+      setSubmitted(true);
+    } catch (err) {
+      console.error('[Wholesale Page Error]:', err);
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleWhatsAppB2B = () => {
@@ -142,6 +174,22 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
             <h2 style={{ fontSize: '30px', color: 'var(--color-royal-maroon)', marginBottom: '14px' }}>
               {language === 'mr' ? 'घाऊक मागणी प्राप्त झाली!' : 'Wholesale Inquiry Received!'}
             </h2>
+
+            {submittedRef && (
+              <div style={{
+                display: 'inline-block',
+                backgroundColor: 'var(--color-warm-ivory)',
+                padding: '8px 18px',
+                borderRadius: '8px',
+                border: '1px solid var(--color-border)',
+                marginBottom: '20px',
+                fontSize: '14px',
+                fontWeight: 700,
+                color: 'var(--color-royal-maroon)'
+              }}>
+                Inquiry Reference: #{submittedRef}
+              </div>
+            )}
 
             <p style={{ fontSize: '16px', color: 'var(--color-espresso-brown)', maxWidth: '560px', margin: '0 auto 28px auto', lineHeight: 1.6 }}>
               {language === 'mr'
@@ -355,7 +403,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                         <input
                           type="checkbox"
                           checked={isChecked}
-                          onChange={() => {}} // handled by parent div
+                          onChange={() => { }} // handled by parent div
                           style={{
                             width: '15px',
                             height: '15px',
@@ -378,6 +426,24 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                 </div>
               </div>
 
+              {errorMsg && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 16px',
+                  backgroundColor: 'rgba(220, 38, 38, 0.08)',
+                  border: '1px solid rgba(220, 38, 38, 0.3)',
+                  borderRadius: '8px',
+                  color: '#b91c1c',
+                  fontSize: '13.5px',
+                  marginBottom: '20px'
+                }}>
+                  <AlertCircle size={16} style={{ flexShrink: 0 }} />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               {/* Row 5: Action Buttons Centered */}
               <div style={{
                 display: 'flex',
@@ -389,6 +455,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
               }}>
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   style={{
                     backgroundColor: '#5C1310',
                     color: '#FFFFFF',
@@ -401,54 +468,38 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '8px',
-                    cursor: 'pointer',
+                    cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                    opacity: isSubmitting ? 0.75 : 1,
                     boxShadow: '0 4px 14px rgba(92, 19, 16, 0.25)',
                     transition: 'all 0.2s ease'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#430C0A';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    if (!isSubmitting) {
+                      e.currentTarget.style.backgroundColor = '#430C0A';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }
                   }}
                   onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#5C1310';
-                    e.currentTarget.style.transform = 'translateY(0)';
+                    if (!isSubmitting) {
+                      e.currentTarget.style.backgroundColor = '#5C1310';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }
                   }}
                 >
-                  <span>{language === 'mr' ? 'घाऊक मागणी नोंदवा' : 'Submit Wholesale Request'}</span>
-                  <ArrowRight size={16} />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 size={16} className="animate-spin" />
+                      <span>{language === 'mr' ? 'विनंती पाठवत आहे...' : 'Submitting Request...'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>{language === 'mr' ? 'घाऊक मागणी नोंदवा' : 'Submit Wholesale Request'}</span>
+                      <ArrowRight size={16} />
+                    </>
+                  )}
                 </button>
 
-                <button
-                  type="button"
-                  onClick={handleWhatsAppB2B}
-                  style={{
-                    backgroundColor: '#18552E',
-                    color: '#FFFFFF',
-                    border: 'none',
-                    borderRadius: '8px',
-                    padding: '13px 28px',
-                    fontFamily: 'var(--font-body)',
-                    fontSize: '15px',
-                    fontWeight: 700,
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    cursor: 'pointer',
-                    boxShadow: '0 4px 14px rgba(24, 85, 46, 0.25)',
-                    transition: 'all 0.2s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = '#124022';
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = '#18552E';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <MessageCircle size={18} fill="#FFFFFF" />
-                  <span>{language === 'mr' ? 'व्हॉट्सअॅपवर संपर्क साधा' : 'Instant WhatsApp Connect'}</span>
-                </button>
+
               </div>
 
             </form>

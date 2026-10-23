@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { PageView, Language } from '../types';
-import { CheckCircle2, Send, Package, ClipboardCheck, FileText } from 'lucide-react';
+import { CheckCircle2, Send, Package, ClipboardCheck, FileText, Loader2, AlertCircle } from 'lucide-react';
 
 interface ExportPageProps {
   onNavigate: (page: PageView) => void;
@@ -19,14 +19,46 @@ export const ExportPage: React.FC<ExportPageProps> = ({ onNavigate, language }) 
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [submittedRef, setSubmittedRef] = useState<string>('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.contactName || !formData.companyName || !formData.corporateEmail || !formData.destinationCountry) {
-      alert(language === 'mr' ? 'कृपया आवश्यक माहिती भरा.' : 'Please fill in all required fields.');
+    setErrorMsg(null);
+
+    if (!formData.contactName.trim() || !formData.companyName.trim() || !formData.corporateEmail.trim() || !formData.destinationCountry.trim()) {
+      setErrorMsg(language === 'mr' ? 'कृपया आवश्यक माहिती भरा.' : 'Please fill in all required fields.');
       return;
     }
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch('/api/export', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      let data: any = null;
+      try {
+        data = await res.json();
+      } catch {
+        // Fallback for non-JSON response
+      }
+
+      if (!res.ok || !data?.success) {
+        throw new Error(data?.error || 'Failed to submit export request. Please try again.');
+      }
+
+      setSubmittedRef(data.referenceId || '');
+      setSubmitted(true);
+    } catch (err) {
+      console.error('[Export Page Error]:', err);
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -249,6 +281,22 @@ export const ExportPage: React.FC<ExportPageProps> = ({ onNavigate, language }) 
               {language === 'mr' ? 'निर्यात चौकशी नोंदवली गेली!' : 'Export Inquiry Received!'}
             </h2>
 
+            {submittedRef && (
+              <div style={{
+                display: 'inline-block',
+                backgroundColor: 'var(--color-warm-ivory)',
+                padding: '8px 18px',
+                borderRadius: '8px',
+                border: '1px solid var(--color-border)',
+                marginBottom: '20px',
+                fontSize: '14px',
+                fontWeight: 700,
+                color: 'var(--color-royal-maroon)'
+              }}>
+                Export Inquiry Reference: #{submittedRef}
+              </div>
+            )}
+
             <p style={{ fontSize: '16px', color: 'var(--color-espresso-brown)', maxWidth: '580px', margin: '0 auto 28px auto', lineHeight: 1.6 }}>
               {language === 'mr'
                 ? `धन्यवाद ${formData.contactName}. ${formData.destinationCountry} साठी आमचे आंतरराष्ट्रीय निर्यात अधिकारी ${formData.companyName} च्या गरजेनुसार कोटेशन तयार करतील.`
@@ -421,9 +469,28 @@ export const ExportPage: React.FC<ExportPageProps> = ({ onNavigate, language }) 
                 />
               </div>
 
+              {errorMsg && (
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '12px 16px',
+                  backgroundColor: 'rgba(220, 38, 38, 0.08)',
+                  border: '1px solid rgba(220, 38, 38, 0.3)',
+                  borderRadius: '8px',
+                  color: '#b91c1c',
+                  fontSize: '13.5px',
+                  marginBottom: '20px'
+                }}>
+                  <AlertCircle size={16} style={{ flexShrink: 0 }} />
+                  <span>{errorMsg}</span>
+                </div>
+              )}
+
               {/* Submit Button (Exact pill/rounded style from screenshot) */}
               <button
                 type="submit"
+                disabled={isSubmitting}
                 style={{
                   width: '100%',
                   backgroundColor: '#430C0A',
@@ -438,21 +505,35 @@ export const ExportPage: React.FC<ExportPageProps> = ({ onNavigate, language }) 
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '10px',
-                  cursor: 'pointer',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  opacity: isSubmitting ? 0.75 : 1,
                   boxShadow: '0 4px 14px rgba(67, 12, 10, 0.28)',
                   transition: 'all 0.2s ease'
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = '#5C1310';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.backgroundColor = '#5C1310';
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = '#430C0A';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  if (!isSubmitting) {
+                    e.currentTarget.style.backgroundColor = '#430C0A';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }
                 }}
               >
-                <Send size={16} style={{ transform: 'rotate(0deg)' }} />
-                <span>{language === 'mr' ? 'आंतरराष्ट्रीय निर्यात चौकशी पाठवा' : 'Submit International Export Inquiry'}</span>
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={16} className="animate-spin" />
+                    <span>{language === 'mr' ? 'विनंती पाठवत आहे...' : 'Submitting Request...'}</span>
+                  </>
+                ) : (
+                  <>
+                    <Send size={16} style={{ transform: 'rotate(0deg)' }} />
+                    <span>{language === 'mr' ? 'आंतरराष्ट्रीय निर्यात चौकशी पाठवा' : 'Submit International Export Inquiry'}</span>
+                  </>
+                )}
               </button>
 
             </form>

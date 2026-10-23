@@ -103,7 +103,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
         position: 'relative',
         zIndex: 10
       }}>
-        
+
         {/* Editorial 2-Column Grid */}
         <div style={{
           display: 'grid',
@@ -115,7 +115,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
 
           {/* Left Column: Typography, Story, Badges & CTAs */}
           <div>
-            
+
             {/* Top Gold Cartouche Badge */}
             <div style={{
               display: 'inline-block',
@@ -135,8 +135,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
                 {language === 'mr'
                   ? 'हस्तनिर्मित • १००% शुद्ध देशी तूप'
                   : language === 'hi'
-                  ? 'हस्तनिर्मित • 100% शुद्ध देसी घी'
-                  : 'HANDCRAFTED • 100% PURE DESI GHEE'}
+                    ? 'हस्तनिर्मित • 100% शुद्ध देसी घी'
+                    : 'HANDCRAFTED • 100% PURE DESI GHEE'}
               </span>
             </div>
 
@@ -178,8 +178,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
               {language === 'mr'
                 ? 'ज्योतीराजसोबत भारताच्या शाही स्वादाचा अनुभव घ्या. १९५१ पासून, आम्ही केवळ उत्कृष्ट सुकामेवा आणि पारंपरिक पाककृतींचा वापर करून स्वादिष्ट मिठाई तयार करत आहोत.'
                 : language === 'hi'
-                ? 'ज्योतिराज के साथ भारत के शाही स्वादों का आनंद लें। 1951 से, हम बेहतरीन सामग्री और पारंपरिक व्यंजनों का उपयोग करके उत्कृष्ट मिठाइयाँ तैयार कर रहे हैं।'
-                : 'Enjoy the royal taste of pure Indian sweets. Handcrafted since 1951 with 100% natural dry fruits, pure desi cow ghee, and zero white sugar—delivered fresh to your home.'}
+                  ? 'ज्योतिराज के साथ भारत के शाही स्वादों का आनंद लें। 1951 से, हम बेहतरीन सामग्री और पारंपरिक व्यंजनों का उपयोग करके उत्कृष्ट मिठाइयाँ तैयार कर रहे हैं।'
+                  : 'Enjoy the royal taste of pure Indian sweets. Handcrafted since 1951 with 100% natural dry fruits, pure desi cow ghee, and zero white sugar—delivered fresh to your home.'}
             </p>
 
             {/* 4 Trust Badges with Circular Gold Tinted Badges */}
@@ -297,7 +297,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
               >
                 <MessageCircle size={18} color="#FFFFFF" />
                 <span>
-                  {language === 'mr' ? 'व्हॉट्सअॅपवर ऑर्डर करा' : language === 'hi' ? 'व्हाट्सएप पर ऑर्डर करें' : 'Order on WhatsApp'}
+                  {language === 'mr' ? 'व्हाट्सएप वर संपर्क साधा' : language === 'hi' ? 'व्हाट्सएप पर संपर्क करें' : 'Connect on WhatsApp'}
                 </span>
               </button>
             </div>
@@ -386,7 +386,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate, language }
           maxWidth: '1080px',
           margin: '0 auto'
         }} className="floating-category-bar">
-          
+
           <div className="hero-pills-row" style={{
             display: 'flex',
             alignItems: 'center',

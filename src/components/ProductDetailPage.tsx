@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { 
   ShoppingBag, 
-  MessageCircle, 
   ArrowLeft, 
   Check, 
   ShieldAlert, 
@@ -10,7 +9,6 @@ import {
 } from 'lucide-react';
 import { Product, PageView, Language, Currency } from '../types';
 import { PRODUCTS } from '../data/products';
-import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle } from '../utils/translations';
 
@@ -46,15 +44,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
     onAddToCart(product, selectedPackSize, quantity);
     setAddedNotice(true);
     setTimeout(() => setAddedNotice(false), 2200);
-  };
-
-  const handleWhatsAppOrder = () => {
-    const formattedTotal = formatPrice(price * quantity, currency);
-    const prodName = getProductName(product, language);
-    const text = encodeURIComponent(
-      `Hello Jyotiraj Global Company! I would like to order "${prodName}" in ${selectedPackSize} pack (Qty: ${quantity}, Total: ${formattedTotal}). Please confirm availability.`
-    );
-    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${text}`, '_blank');
   };
 
   return (
@@ -356,17 +345,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({
                     <ShoppingBag size={16} /> Add to Cart (₹{price * quantity})
                   </>
                 )}
-              </button>
-
-              {/* WhatsApp Order */}
-              <button
-                type="button"
-                onClick={handleWhatsAppOrder}
-                className="btn btn-whatsapp"
-                style={{ padding: '9px 18px', fontSize: '13px', borderRadius: '9999px' }}
-              >
-                <MessageCircle size={16} />
-                <span>Order on WhatsApp</span>
               </button>
             </div>
 

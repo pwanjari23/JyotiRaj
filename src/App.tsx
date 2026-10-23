@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { PageView, Product, CartItem, Language, Currency } from './types';
 import { PRODUCTS } from './data/products';

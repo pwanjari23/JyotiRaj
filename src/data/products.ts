@@ -350,38 +350,53 @@ export const FAQS = [
       'We make authentic, healthy Indian dry fruit sweets handcrafted with pure desi cow ghee and dates—with zero added white sugar. Our five signature sweets are: Premium Special Dry Fruits Laddu (11 ingredients), Dry Fruits Khajur Roll (with pure cow ghee), Kids Special Dry Fruit Laddu (with chia & flax seeds), Classic Dry Fruit Ladoo (with strength-giving Gond), and Dry Fruits Khajur Barfi.'
   },
   {
-    question: 'What ingredients do you use?',
+    question: 'Do you deliver dry fruit sweets to Wardha, Hinganghat, Nagpur, and Vidarbha?',
+    answer:
+      'Yes! Jyotiraj Global Company offers prompt home delivery of fresh dry fruit sweets, laddus, and khajur rolls across Wardha, Hinganghat, Nagpur, Amravati, Chandrapur, Yavatmal, Akola, and all surrounding areas of Vidarbha and Maharashtra. We provide local courier delivery as well as bulk dispatch for festive and family occasions.'
+  },
+  {
+    question: 'Do you provide Pan-India delivery for online sweet orders?',
+    answer:
+      'Yes, we deliver across India covering Mumbai, Pune, Delhi NCR, Bengaluru, Hyderabad, Chennai, Kolkata, Ahmedabad, and over 19,000 pin codes. Sweets are packed in food-grade, airtight, tamper-proof packaging to ensure they arrive fresh and crunchy within 2 to 5 business days.'
+  },
+  {
+    question: 'How do international customers or NRIs order sweets to USA, UK, or UAE?',
+    answer:
+      'International buyers, retail importers, and NRIs can easily order through our website quote request, Export Desk form, or direct WhatsApp. We export vacuum-sealed, FSSAI-compliant sweet packages to the United States, United Kingdom, United Arab Emirates (Dubai), Canada, Australia, and Singapore with phytosanitary and export clearance documentation.'
+  },
+  {
+    question: 'Are Jyotiraj dry fruit laddus truly 100% sugar-free and diabetic-friendly?',
+    answer:
+      'Yes. Our signature dry fruit laddus and khajur rolls contain zero added white sugar, zero jaggery syrup, and zero artificial sweeteners. They are naturally sweetened exclusively with premium dates (Khajur), making them rich in natural dietary fiber, plant proteins, and heart-healthy fats from whole almonds, cashews, pistachios, and walnuts.'
+  },
+  {
+    question: 'What ingredients do you use in your dry fruit sweets?',
     answer:
       'We use only 100% natural ingredients: premium whole nuts (almonds, cashews, pistachios, walnuts), sweet dates, dried figs, healthy seeds (pumpkin, sunflower, sesame, chia, flax), pure cow ghee, edible gum (gond), and fragrant green cardamom and nutmeg.'
   },
   {
     question: 'What pack sizes can I buy?',
     answer:
-      'We offer retail consumer packs in 250g, 500g, and 1kg airtight food-safe containers. For weddings, corporate gifts, and wholesale export orders, we also offer custom gift packaging and bulk master cartons.'
+      'We offer retail consumer packs in 250g, 500g, and 1kg airtight food-safe containers. For weddings, corporate gifts, and wholesale export orders, we also offer custom gift packaging, festive decorative boxes, and bulk master cartons.'
   },
   {
-    question: 'How should I store these sweets?',
+    question: 'How should I store these sweets and how long do they stay fresh?',
     answer:
-      'Store in a closed airtight container in a cool, dry place away from heat and direct sunlight. Since we do not use artificial preservatives, keeping them sealed protects their natural freshness and crisp nutty crunch.'
+      'Store in a closed airtight container in a cool, dry place away from heat and direct sunlight. Because our sweets are roasted in pure cow ghee and bound with dates without water or chemical preservatives, they naturally maintain peak freshness for 3 to 4 months in airtight packaging.'
   },
   {
-    question: 'How long do they stay fresh?',
+    question: 'Can I place bulk or wholesale orders for corporate gifting and weddings?',
     answer:
-      'Because our sweets are made with roasted dry fruits, pure cow ghee, and dates with no added water, they naturally stay fresh for 3 to 4 months in airtight packaging.'
+      'Yes! We regularly provide wholesale orders for corporate festive gifting (Diwali, New Year), wedding favors, sweet shops, and supermarket distributors across India and abroad with attractive volume pricing and custom corporate branding.'
   },
   {
-    question: 'Can I place bulk or wholesale orders?',
+    question: 'What is the heritage and background of Jyotiraj Global Company?',
     answer:
-      'Yes! We regularly provide wholesale orders for corporate gifting, wedding celebrations, sweet shops, and supermarket distributors across India with special volume pricing.'
+      'Founded in 1951 in Maharashtra, Jyotiraj Global Company operates as an authentic Gruh Udyog upholding generations-old royal recipes. We are dedicated to pure ingredients, zero adulteration, and traditional slow-roasting in pure cow ghee.'
   },
   {
-    question: 'Do you ship internationally?',
+    question: 'How can I place an order or request a quote?',
     answer:
-      'Yes, we export our sweets worldwide to the USA, UK, UAE, Canada, Australia, and Europe. Our products meet international food standards and are packed in sealed cartons for safe, fresh arrival.'
-  },
-  {
-    question: 'How can I place an order?',
-    answer:
-      'You can order directly on our website, message us on WhatsApp for fast personalized service, or submit our wholesale form for bulk requirements.'
+      'You can select items into your Sweet Bag on our website and submit an instant quote request, reach out via WhatsApp at +91 7304314338, or fill out our wholesale and export forms for custom bulk quotes.'
   }
 ];

@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { ShoppingBag, MessageCircle, Eye, Check } from 'lucide-react';
+import { Eye } from 'lucide-react';
 import { Product, PageView, Language, Currency } from '../types';
 import { PRODUCTS, CATEGORIES } from '../data/products';
-import { CONTACT_INFO } from '../data/contactInfo';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle, t } from '../utils/translations';
 
 interface SignatureCollectionProps {
   onNavigate: (page: PageView, productSlug?: string) => void;
-  onAddToCart: (product: Product, packSize: '250g' | '500g' | '1kg') => void;
+  onAddToCart?: (product: Product, packSize: '250g' | '500g' | '1kg') => void;
   onQuickView: (product: Product) => void;
   language: Language;
   currency?: Currency;
@@ -35,8 +34,6 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
     'prod-4': '500g',
     'prod-5': '500g',
   });
-  const [addedItemNotice, setAddedItemNotice] = useState<string | null>(null);
-
   const filteredProducts = PRODUCTS.filter((item) => {
     if (activeCategory === 'all') return true;
     if (activeCategory === 'laddu') return item.category === 'laddu';
@@ -44,24 +41,6 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
     if (activeCategory === 'hamper') return true; // show all for festive hamper curation
     return true;
   });
-
-  const handleAddToCartClick = (product: Product) => {
-    const size = selectedPackSizes[product.id] || '500g';
-    onAddToCart(product, size);
-    setAddedItemNotice(product.id);
-    setTimeout(() => setAddedItemNotice(null), 2000);
-  };
-
-  const handleWhatsAppOrder = (product: Product) => {
-    const size = selectedPackSizes[product.id] || '500g';
-    const price = product.provisionalPrice[size];
-    const formatted = formatPrice(price, currency);
-    const prodName = getProductName(product, language);
-    const message = encodeURIComponent(
-      `Hello Jyotiraj Global Company! I would like to order "${prodName}" in ${size} pack (${formatted}). Please confirm availability.`
-    );
-    window.open(`https://wa.me/${CONTACT_INFO.whatsappRaw}?text=${message}`, '_blank');
-  };
 
   return (
     <section id="collection" className="signature-collection-section" style={{
@@ -327,43 +306,14 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                       </div>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <div>
                       <button
-                        onClick={() => handleWhatsAppOrder(product)}
-                        className="product-card-wa-btn"
-                        style={{
-                          width: '32px',
-                          height: '32px',
-                          borderRadius: '50%',
-                          backgroundColor: 'var(--color-forest-green)',
-                          color: '#fff',
-                          border: 'none',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          cursor: 'pointer',
-                          boxShadow: '0 2px 6px rgba(24,85,46,0.2)'
-                        }}
-                        title="Order via WhatsApp"
-                        aria-label={`Order ${product.name} on WhatsApp`}
+                        onClick={() => onNavigate('product-detail', product.slug)}
+                        className="btn btn-primary product-card-view-btn"
+                        style={{ padding: '6px 14px', fontSize: '11.5px', borderRadius: '9999px', gap: '5px' }}
                       >
-                        <MessageCircle size={15} />
-                      </button>
-
-                      <button
-                        onClick={() => handleAddToCartClick(product)}
-                        className="btn btn-primary product-card-add-btn"
-                        style={{ padding: '6px 11px', fontSize: '11.5px', borderRadius: '9999px', gap: '4px' }}
-                      >
-                        {addedItemNotice === product.id ? (
-                          <>
-                            <Check size={12} /> Added
-                          </>
-                        ) : (
-                          <>
-                            <ShoppingBag size={12} /> Add
-                          </>
-                        )}
+                        <Eye size={12} />
+                        <span>{language === 'mr' ? 'पहा' : language === 'hi' ? 'देखें' : 'View'}</span>
                       </button>
                     </div>
                   </div>
@@ -432,12 +382,8 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
           .product-card-price {
             font-size: 15px !important;
           }
-          .product-card-wa-btn {
-            width: 28px !important;
-            height: 28px !important;
-          }
-          .product-card-add-btn {
-            padding: 5px 9px !important;
+          .product-card-view-btn {
+            padding: 5px 10px !important;
             font-size: 11px !important;
           }
         }

@@ -340,6 +340,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, language }) => {
           </div>
         </div>
 
+        {/* 4-Tier Delivery Hubs & Local/Global SEO Keywords Strip */}
+        <div style={{
+          borderTop: '1px solid rgba(255, 255, 255, 0.08)',
+          paddingTop: '14px',
+          paddingBottom: '14px',
+          fontSize: '11.5px',
+          color: 'rgba(255, 248, 237, 0.6)',
+          lineHeight: 1.7
+        }}>
+          <div style={{ marginBottom: '6px' }}>
+            <span style={{ color: 'var(--color-antique-gold-light)', fontWeight: 700 }}>Local & Regional Delivery: </span>
+            Wardha • Hinganghat • Nagpur • Sevagram • Amravati • Chandrapur • Yavatmal • Akola • Gondia • Pune • Mumbai • Thane • Nashik
+          </div>
+          <div style={{ marginBottom: '6px' }}>
+            <span style={{ color: 'var(--color-antique-gold-light)', fontWeight: 700 }}>National & Global Reach: </span>
+            Pan-India (Delhi NCR • Bengaluru • Hyderabad • Chennai • Kolkata • Ahmedabad) • Worldwide Export (USA • UK • UAE Dubai • Canada • Australia • Singapore)
+          </div>
+          <div>
+            <span style={{ color: 'var(--color-antique-gold-light)', fontWeight: 700 }}>Popular Searches: </span>
+            Dry Fruit Sweets Wardha • Dry Fruit Sweets Hinganghat • Dry Fruit Sweets Nagpur • Dry Fruit Laddu Wardha • Khajur Roll Hinganghat • Sugar Free Sweets Nagpur • Pure Cow Ghee Laddu • सुकामेवा लाडू वर्धा • सुकामेवा लाडू हिंगणघाट • सुकामेवा लाडू नागपूर • Buy Dry Fruit Sweets Online India • Indian Sweets Export to USA & UK • Corporate Sweet Gifting
+          </div>
+        </div>
+
         {/* Bottom Bar */}
         <div style={{
           display: 'flex',
