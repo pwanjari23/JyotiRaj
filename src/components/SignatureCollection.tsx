@@ -4,6 +4,7 @@ import { Product, PageView, Language, Currency } from '../types';
 import { PRODUCTS, CATEGORIES } from '../data/products';
 import { formatPrice } from '../utils/currency';
 import { getProductName, getProductSubtitle, t } from '../utils/translations';
+import { HomemadePapadSection } from './HomemadePapadSection';
 
 interface SignatureCollectionProps {
   onNavigate: (page: PageView, productSlug?: string) => void;
@@ -33,6 +34,9 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
     'prod-3': '500g',
     'prod-4': '500g',
     'prod-5': '500g',
+    'prod-6': '500g',
+    'prod-7': '500g',
+    'prod-8': '500g',
   });
   const filteredProducts = PRODUCTS.filter((item) => {
     if (activeCategory === 'all') return true;
@@ -129,6 +133,34 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                 </button>
               );
             })}
+
+            <button
+              type="button"
+              onClick={() => {
+                const el = document.getElementById('homemade-papads');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="signature-category-tab-btn"
+              style={{
+                padding: '9px 18px',
+                borderRadius: '9999px',
+                border: '1px solid var(--color-antique-gold)',
+                backgroundColor: 'rgba(247, 235, 212, 0.75)',
+                color: 'var(--color-royal-maroon)',
+                fontFamily: 'var(--font-body)',
+                fontSize: '13.5px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.02)',
+                transition: 'var(--transition-smooth)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <span>{language === 'mr' ? 'अस्सल पापड व कुरडई' : 'Homemade Papads & Kurdai'}</span>
+              <span style={{ fontSize: '10px', backgroundColor: 'var(--color-royal-maroon)', color: '#fff', padding: '1px 7px', borderRadius: '8px', fontWeight: 800 }}>New</span>
+            </button>
           </div>
         </div>
 
@@ -153,11 +185,11 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                   transition: 'transform 0.3s ease, box-shadow 0.3s ease'
                 }}
               >
-                {/* Product Image Area */}
+                {/* Product Image Area (Compact height instead of huge 1/1 square) */}
                 <div style={{
                   position: 'relative',
                   width: '100%',
-                  aspectRatio: '1/1',
+                  height: '170px',
                   overflow: 'hidden',
                   backgroundColor: 'var(--color-pure-white)',
                   borderBottom: '1px solid var(--color-border)',
@@ -182,14 +214,14 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                   {product.badge && (
                     <div style={{
                       position: 'absolute',
-                      top: '8px',
-                      left: '8px',
+                      top: '7px',
+                      left: '7px',
                       backgroundColor: 'var(--color-royal-maroon)',
                       color: 'var(--color-pure-white)',
-                      fontSize: '9.5px',
+                      fontSize: '9px',
                       fontWeight: 700,
-                      letterSpacing: '0.4px',
-                      padding: '3px 7px',
+                      letterSpacing: '0.3px',
+                      padding: '2px 6px',
                       borderRadius: '4px',
                       textTransform: 'uppercase'
                     }}>
@@ -205,10 +237,10 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                     }}
                     style={{
                       position: 'absolute',
-                      top: '8px',
-                      right: '8px',
-                      width: '30px',
-                      height: '30px',
+                      top: '7px',
+                      right: '7px',
+                      width: '28px',
+                      height: '28px',
                       borderRadius: '50%',
                       backgroundColor: 'rgba(255,255,255,0.94)',
                       border: '1px solid var(--color-border)',
@@ -222,19 +254,19 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                     title="Quick View"
                     aria-label={`Quick View ${product.name}`}
                   >
-                    <Eye size={14} />
+                    <Eye size={13} />
                   </button>
                 </div>
 
-                {/* Card Content Area (Compact, without pack selector) */}
-                <div className="product-card-body" style={{ padding: '14px 12px', display: 'flex', flexDirection: 'column', flex: 1 }}>
+                {/* Card Content Area (Compact, refined) */}
+                <div className="product-card-body" style={{ padding: '10px 10px 12px 10px', display: 'flex', flexDirection: 'column', flex: 1 }}>
                   <div style={{
-                    fontSize: '10px',
-                    fontWeight: 700,
+                    fontSize: '9px',
+                    fontWeight: 800,
                     color: 'var(--color-antique-gold-dark)',
                     textTransform: 'uppercase',
-                    letterSpacing: '0.8px',
-                    marginBottom: '4px'
+                    letterSpacing: '0.6px',
+                    marginBottom: '2px'
                   }}>
                     {product.categoryLabel}
                   </div>
@@ -243,13 +275,13 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                     className="product-card-title"
                     onClick={() => onNavigate('product-detail', product.slug)}
                     style={{
-                      fontSize: '15px',
-                      fontWeight: 700,
+                      fontSize: '13.5px',
+                      fontWeight: 800,
                       color: 'var(--color-royal-maroon)',
-                      marginBottom: '6px',
+                      marginBottom: '4px',
                       cursor: 'pointer',
                       lineHeight: 1.25,
-                      minHeight: '38px',
+                      minHeight: '34px',
                       display: '-webkit-box',
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',
@@ -262,14 +294,15 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                   <p
                     className="product-card-subtitle"
                     style={{
-                      fontSize: '11.5px',
+                      fontSize: '11px',
                       color: 'var(--color-muted-text)',
-                      lineHeight: 1.35,
-                      marginBottom: '10px',
+                      lineHeight: 1.3,
+                      marginBottom: '8px',
                       display: '-webkit-box',
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',
-                      overflow: 'hidden'
+                      overflow: 'hidden',
+                      minHeight: '28px'
                     }}
                   >
                     {getProductSubtitle(product, language)}
@@ -280,19 +313,19 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                     className="product-card-actions"
                     style={{
                       marginTop: 'auto',
-                      paddingTop: '10px',
-                      borderTop: '1px solid rgba(230, 213, 185, 0.6)',
+                      paddingTop: '8px',
+                      borderTop: '1px solid rgba(230, 213, 185, 0.5)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'space-between',
-                      gap: '6px'
+                      gap: '4px'
                     }}
                   >
                     <div>
                       <div
                         className="product-card-price"
                         style={{
-                          fontSize: '17px',
+                          fontSize: '15.5px',
                           fontWeight: 800,
                           fontFamily: 'var(--font-heading)',
                           color: 'var(--color-royal-maroon)',
@@ -301,7 +334,7 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                       >
                         {formatPrice(price, currency)}
                       </div>
-                      <div style={{ fontSize: '10px', color: 'var(--color-muted-text)' }}>
+                      <div style={{ fontSize: '9.5px', color: 'var(--color-muted-text)' }}>
                         {language === 'mr' ? '५०० ग्रॅम पॅक' : language === 'hi' ? '५०० ग्राम पैक' : '500g pack'}
                       </div>
                     </div>
@@ -310,7 +343,7 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
                       <button
                         onClick={() => onNavigate('product-detail', product.slug)}
                         className="btn btn-primary product-card-view-btn"
-                        style={{ padding: '6px 14px', fontSize: '11.5px', borderRadius: '9999px', gap: '5px' }}
+                        style={{ padding: '5px 12px', fontSize: '11px', borderRadius: '9999px', gap: '4px' }}
                       >
                         <Eye size={12} />
                         <span>{language === 'mr' ? 'पहा' : language === 'hi' ? 'देखें' : 'View'}</span>
@@ -322,6 +355,9 @@ export const SignatureCollection: React.FC<SignatureCollectionProps> = ({
             );
           })}
         </div>
+
+        {/* Dedicated Section: Meghare's Homemade Papads, Kurdai & Sun-Dried Delicacies */}
+        <HomemadePapadSection language={language} currency={currency} />
       </div>
 
       <style>{`

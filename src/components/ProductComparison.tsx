@@ -201,6 +201,9 @@ export const ProductComparison: React.FC<ProductComparisonProps> = ({
                     {p.id === 'prod-3' && 'Nuts, dates, chia, flax & pumpkin seeds'}
                     {p.id === 'prod-4' && 'Nuts, dates, sesame, figs & spices'}
                     {p.id === 'prod-5' && 'Dates, almonds, cashews, pista, walnuts'}
+                    {p.id === 'prod-6' && 'Toasted sesame, pure cow ghee, dates/jaggery'}
+                    {p.id === 'prod-7' && 'Roasted peanuts, jaggery, pure cow ghee'}
+                    {p.id === 'prod-8' && 'Gond, dry fruits, cow ghee & maternal herbs'}
                   </td>
                 ))}
               </tr>

@@ -33,6 +33,9 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
     { id: 'prod-3', title: 'Kids Special Dry Fruit Laddu' },
     { id: 'prod-4', title: 'Classic Dry Fruit Ladoo' },
     { id: 'prod-5', title: 'Dry Fruits Khajur Barfi' },
+    { id: 'prod-6', title: 'Jyotiraj Til Laddu' },
+    { id: 'prod-7', title: 'Jyotiraj Shengdana Laddu' },
+    { id: 'prod-8', title: 'Megha Madhur Delivery Laddu' },
   ];
 
   const handleProductToggle = (title: string) => {
@@ -292,7 +295,7 @@ export const WholesalePage: React.FC<WholesalePageProps> = ({ onNavigate, langua
                     type="tel"
                     required
                     className="wholesale-form-input"
-                    placeholder="+91 7020572698"
+                    placeholder="+91 7304314338"
                     value={formData.phoneNumber}
                     onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
                   />

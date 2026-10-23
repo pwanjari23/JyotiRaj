@@ -1,4 +1,5 @@
 import { Language, Product } from '../types';
+import { PapadProduct } from '../data/papadProducts';
 
 export const TRANSLATIONS: Record<Language, Record<string, string>> = {
   en: {
@@ -287,6 +288,24 @@ export function getProductSubtitle(product: Product, language: Language = 'en'):
 }
 
 export function getProductOverview(product: Product, language: Language = 'en'): string {
+  if (language === 'mr') return product.marathiOverview || product.overview;
+  if (language === 'hi') return product.hindiOverview || product.overview;
+  return product.overview;
+}
+
+export function getPapadName(product: PapadProduct, language: Language = 'en'): string {
+  if (language === 'mr') return product.marathiName || product.name;
+  if (language === 'hi') return product.hindiName || product.name;
+  return product.name;
+}
+
+export function getPapadSubtitle(product: PapadProduct, language: Language = 'en'): string {
+  if (language === 'mr') return product.marathiSubtitle || product.subtitle;
+  if (language === 'hi') return product.hindiSubtitle || product.subtitle;
+  return product.subtitle;
+}
+
+export function getPapadOverview(product: PapadProduct, language: Language = 'en'): string {
   if (language === 'mr') return product.marathiOverview || product.overview;
   if (language === 'hi') return product.hindiOverview || product.overview;
   return product.overview;

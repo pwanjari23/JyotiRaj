@@ -333,6 +333,200 @@ export const PRODUCTS: Product[] = [
     expectedFlavour: 'Date-forward, sweet, and nutty',
     expectedTexture: 'Firm, chewy, and nutty',
     suggestedPositioning: 'Export-Grade Premium Sweet'
+  },
+  {
+    id: 'prod-6',
+    slug: 'til-laddu',
+    name: 'Jyotiraj Til Laddu',
+    marathiName: 'ज्योतीराज अस्सल तिळ लाडू',
+    hindiName: 'ज्योतीराज पारंपरिक तिल लड्डू',
+    subtitle: 'Pure Sesame • Natural Warmth • High Calcium & Iron',
+    marathiSubtitle: 'अस्सल तिळ, खजूर/गूळ आणि शुद्ध गाईच्या तुपाचा खमंग लाडू',
+    hindiSubtitle: 'भुने हुए तिल, प्राकृतिक मिठास और भरपूर कैल्शियम',
+    category: 'laddu',
+    categoryLabel: 'Traditional Sesame Laddu',
+    image: '/assets/product_til_laddu.jpg',
+    galleryImages: [
+      '/assets/product_til_laddu.jpg',
+      '/assets/photo_til_laddu.jpg'
+    ],
+    badge: 'Rich in Calcium & Warmth',
+    rating: 4.9,
+    reviewCount: 46,
+    provisionalPrice: {
+      '250g': 220,
+      '500g': 420,
+      '1kg': 800,
+    },
+    overview:
+      'Our traditional Til Laddu is handcrafted with premium toasted white sesame seeds, rich crushed nuts, and wholesome dates/jaggery bound with pure cow ghee. A cherished Maharashtrian winter specialty renowned for body warmth, natural iron, and bone health.',
+    marathiOverview:
+      'खमंग भाजलेले पांढरे तिळ, सुकामेवा, शुद्ध गाईचे तूप आणि नैसर्गिक गूळ/खजूर यांचा पारंपारिक शक्तिवर्धक तिळ लाडू. शरीराची उष्णता, हाडांची मजबुती आणि कॅल्शियमसाठी अत्यंत गुणकारी.',
+    hindiOverview:
+      'धीमी आंच पर भुने हुए सफेद तिल, मेवे, शुद्ध गाय का घी और प्राकृतिक मिठास से बना पारंपरिक तिल लड्डू। सर्दियों में शरीर को गर्माहट और भरपूर कैल्शियम देता है।',
+    websiteDescription:
+      'Celebrate tradition and authentic taste with Jyotiraj Til Laddu. Handcrafted using premium slow-roasted sesame seeds, pure cow ghee, and natural jaggery or soft dates, every bite offers an irresistible nutty crunch. Sesame seeds are one of nature’s richest plant-based sources of calcium, making this ladoo ideal for bone wellness, joint flexibility, and everyday energy.',
+    proposedIngredients: [
+      { name: 'White Sesame Seeds (Til)', hindiName: 'High Calcium & Minerals', verified: true },
+      { name: 'Pure Cow Ghee', hindiName: 'Shuddha Desi Ghee', verified: true },
+      { name: 'Natural Jaggery & Dates', hindiName: 'Iron-rich Natural Sweetener', verified: true },
+      { name: 'Roasted Peanuts & Cashews', hindiName: 'Crunchy Protein Base', verified: true },
+      { name: 'Green Cardamom (Elaichi)', hindiName: 'Fragrant Elaichi', verified: true },
+      { name: 'Nutmeg (Jaiphal)', hindiName: 'Warmth & Smooth Digestion', verified: true }
+    ],
+    sensoryProfile: {
+      taste: 'Warm, toasty sesame flavor balanced with rich sweetness and fragrant cardamom.',
+      texture: 'Delightfully crispy and crunchy toasted sesame bite with a soft, melt-in-the-mouth core.',
+      aroma: 'Freshly roasted sesame seeds, rich cow ghee, and soothing green cardamom.',
+      appearance: 'Golden-brown spherical laddus speckled with whole toasted white sesame seeds.'
+    },
+    highlights: [
+      'Prepared with 100% slow-roasted premium white sesame seeds',
+      'Packed with natural plant calcium for bone and joint strength',
+      'Traditional Gruh Udyog recipe crafted with pure cow ghee',
+      'Zero artificial preservatives, additives, or chemicals'
+    ],
+    allergens: ['Sesame seeds', 'Peanuts', 'Cashews', 'Milk / Ghee'],
+    nutritionalHighlights: [
+      'Sesame seeds are a superfood providing over 3x the calcium of milk by weight',
+      'Natural jaggery and dates supply vital dietary iron to fight fatigue and boost hemoglobin',
+      'Pure cow ghee aids nutrient assimilation and maintains joint lubrication'
+    ],
+    shape: 'Round Sphere',
+    expectedFlavour: 'Toasty sesame, nutty, and warm caramel',
+    expectedTexture: 'Crispy, crunchy, and chewy',
+    suggestedPositioning: 'Winter & Heritage Superfood'
+  },
+  {
+    id: 'prod-7',
+    slug: 'shengdana-laddu',
+    name: 'Jyotiraj Shengdana Laddu',
+    marathiName: 'ज्योतीराज खमंग शेंगदाणा लाडू',
+    hindiName: 'ज्योतीराज स्वादिष्ट मूंगफली लड्डू',
+    subtitle: 'Slow-Roasted Peanuts • High Plant Protein • Pure Energy',
+    marathiSubtitle: 'भाजलेले शेंगदाणे, गूळ आणि शुद्ध तुपाचा अस्सल महाराष्ट्रीयन लाडू',
+    hindiSubtitle: 'भुनी हुई मूंगफली, प्राकृतिक मिठास और प्रोटीन का उत्तम स्रोत',
+    category: 'laddu',
+    categoryLabel: 'High-Protein Peanut Laddu',
+    image: '/assets/product_shengdana_laddu.jpg',
+    galleryImages: [
+      '/assets/product_shengdana_laddu.jpg',
+      '/assets/photo_shengdana_laddu.jpg'
+    ],
+    badge: 'High Plant Protein',
+    rating: 4.9,
+    reviewCount: 53,
+    provisionalPrice: {
+      '250g': 200,
+      '500g': 380,
+      '1kg': 720,
+    },
+    overview:
+      'Our Shengdana Laddu is crafted from golden slow-roasted Vidarbha peanuts, coarsely ground and blended with traditional jaggery and pure cow ghee. Packed with high plant protein, healthy fats, and sustained natural energy.',
+    marathiOverview:
+      'मंद आचेवर भाजलेले दर्जेदार शेंगदाणे, अस्सल गूळ आणि शुद्ध देशी तूप वापरून बनवलेला रुचकर लाडू. प्रथिने (प्रोटीन) आणि नैसर्गिक ऊर्जेचा उत्तम स्त्रोत.',
+    hindiOverview:
+      'धीमी आंच पर भुनी हुई करारी मूंगफली, पारंपरिक गुड़ और शुद्ध देसी घी से तैयार स्वादिष्ट लड्डू। बच्चों और बड़ों के लिए भरपूर प्रोटीन और ऊर्जा का खजाना।',
+    websiteDescription:
+      'Enjoy the timeless, heartwarming crunch of Maharashtra’s favorite peanut laddu. Jyotiraj Shengdana Laddu uses premium local peanuts roasted to perfection to release their full aroma and natural oils, coarsely crushed and bound with pure jaggery and ghee. Delivering clean plant protein and fiber, it makes the perfect post-workout snack, school break bite, or everyday teatime treat.',
+    proposedIngredients: [
+      { name: 'Roasted Peanuts (Shengdana)', hindiName: 'High Protein Groundnuts', verified: true },
+      { name: 'Traditional Jaggery (Gul)', hindiName: 'Unrefined Jaggery', verified: true },
+      { name: 'Pure Cow Ghee', hindiName: 'Shuddha Desi Tup', verified: true },
+      { name: 'Green Cardamom (Elaichi)', hindiName: 'Fragrant Elaichi', verified: true }
+    ],
+    sensoryProfile: {
+      taste: 'Rich roasted peanut butteriness harmonized with comforting jaggery sweetness.',
+      texture: 'Coarsely crushed nutty crunch that melts softly with every chew.',
+      aroma: 'Intensely fragrant roasted peanuts and warm jaggery.',
+      appearance: 'Golden-tan rustic spheres with visible crushed peanut pieces.'
+    },
+    highlights: [
+      'Made with 100% slow-roasted premium Vidarbha peanuts',
+      'Natural source of clean plant protein and dietary fiber',
+      'Bound with pure cow ghee and traditional unrefined jaggery',
+      'Wholesome healthy energy for sports, study, and daily fitness'
+    ],
+    allergens: ['Peanuts', 'Milk / Ghee'],
+    nutritionalHighlights: [
+      'Peanuts provide high protein, niacin, and heart-healthy monounsaturated fats',
+      'Traditional jaggery provides natural iron, boosting vitality without sugar spikes',
+      'Ghee helps in deep tissue nourishment and smooth digestion'
+    ],
+    shape: 'Round Sphere',
+    expectedFlavour: 'Nutty, roasty, and deeply comforting',
+    expectedTexture: 'Crunchy, coarse, and crumbly',
+    suggestedPositioning: 'Everyday Protein & Energy Snack'
+  },
+  {
+    id: 'prod-8',
+    slug: 'megha-madhur-delivery-laddu',
+    name: "Meghare's Megha Madhur Delivery Laddu",
+    marathiName: 'मेघा मधुर घरगुती पौष्टिक डिलेव्हरी लाडू',
+    hindiName: 'मेघा मधुर घरेलू पौष्टिक डिलीवरी लड्डू',
+    subtitle: 'For Pregnant & Lactating Mothers • 100% Pure Nutritious Dry Fruit Laddu',
+    marathiSubtitle: 'गर्भवती व बाळंतीण झालेल्या आईसाठी पोषक, स्नायूवर्धक व शक्तिवर्धक',
+    hindiSubtitle: 'गर्भवती व स्तनपान कराने वाली माताओं के लिए संपूर्ण शक्तिवर्धक पोषण',
+    category: 'laddu',
+    categoryLabel: 'Postpartum & Maternity Wellness Laddu',
+    image: '/assets/photo_delivery_laddu_sq.jpg',
+    galleryImages: [
+      '/assets/poster_delivery_laddu.jpg',
+      '/assets/photo_delivery_laddu_sq.jpg',
+      '/assets/photo_delivery_laddu_plate.jpg'
+    ],
+    badge: 'For Pregnant & Lactating Mothers',
+    rating: 5.0,
+    reviewCount: 92,
+    provisionalPrice: {
+      '250g': 390,
+      '500g': 760,
+      '1kg': 1490,
+    },
+    overview:
+      'Specially crafted by Jyoti Enterprises for pregnant and postpartum (बाळंतीण) mothers, as well as growing children. Handcrafted with pure cow ghee, edible gum (gond), dry fruits, and ayurvedic herbs to strengthen muscles, boost stamina, supply essential calcium, and support rapid postpartum recovery and healthy lactation.',
+    marathiOverview:
+      'गर्भवती व बाळंतीण झालेल्या आईसाठी खास घरगुती पौष्टिक लाडू. १००% शुद्ध, पोषक, स्नायूवर्धक, शक्तिवर्धक, कॅल्शियम युक्त आणि उत्तम चवीचे. लहान मुलांच्या सर्वांगीण विकासासाठी व रोगप्रतिकारक शक्ती वाढवण्यासाठी अत्यंत लाभकारी. FSSAI प्रमाणित.',
+    hindiOverview:
+      'गर्भवती और नई माताओं (डिलीवरी के बाद) के लिए विशेष घरेलू पौष्टिक लड्डू। 100% शुद्ध, मांसपेशियों को मजबूत करने वाला, शक्तिवर्धक, कैल्शियम से भरपूर और बच्चों के विकास व रोगप्रतिरोधक क्षमता के लिए अत्यंत लाभकारी। FSSAI प्रमाणित।',
+    websiteDescription:
+      'Nourish the sacred journey of motherhood with Meghare’s Megha Madhur Delivery Laddu by Jyoti Enterprises. Based on authentic Ayurvedic maternal care wisdom, this special laddu is prepared in pure cow ghee with roasted edible gum (dink/gond), premium almonds, cashews, pistachios, walnuts, dates, and vitality herbs. It restores physical stamina, strengthens pelvic muscles and bones with bioavailable calcium, promotes smooth lactation, and prevents postpartum aches. Also highly beneficial for children’s growth and immunity.',
+    proposedIngredients: [
+      { name: 'Pure Cow Ghee', hindiName: 'Desi Tup for Maternal Recovery', verified: true },
+      { name: 'Edible Gum (Gond / Dink)', hindiName: 'Pelvic & Joint Strength', verified: true },
+      { name: 'Almonds & Walnuts', hindiName: 'Brain & Nervous System Nutrition', verified: true },
+      { name: 'Cashews & Pistachios', hindiName: 'Zinc, Protein & Vitality', verified: true },
+      { name: 'Dates & Jaggery', hindiName: 'Natural Iron & Energy', verified: true },
+      { name: 'Garden Cress Seeds (Aliv/Halim)', hindiName: 'Lactation & Hemoglobin', verified: true },
+      { name: 'Dry Ginger (Sunth) & Spices', hindiName: 'Digestion & Postpartum Healing', verified: true }
+    ],
+    sensoryProfile: {
+      taste: 'Rich, buttery, and comforting with deep dry-fruit richness and a mild, soothing herbal warmth.',
+      texture: 'Dense, crunchy from fried gond and nuts, with a melt-in-the-mouth buttery finish.',
+      aroma: 'Pure desi cow ghee, fried gond, roasted nuts, and warm aromatic spices.',
+      appearance: 'Lustrous, nut-studded golden-brown spheres packed with visible almond and dry fruit slivers.'
+    },
+    highlights: [
+      'Specially formulated for Pregnant Women & Postpartum (बाळंतीण) Mothers',
+      '5-Fold Benefits: पोषक (Nutritious), स्नायूवर्धक (Muscle strengthening), शक्तिवर्धक (Energy booster), कॅल्शियम युक्त (Calcium rich), उत्तम चवीचे (Great taste)',
+      'Promotes smooth lactation, pelvic healing, and bone & joint strength',
+      'Highly beneficial for young children’s growth and immune vitality',
+      '100% Pure Homemade Recipe • FSSAI Certified: 21520269000423',
+      'Handcrafted by Jyoti Enterprises, Hinganghat, Dist. Wardha (MS)'
+    ],
+    allergens: ['Almonds', 'Cashews', 'Walnuts', 'Pistachios', 'Milk / Ghee'],
+    servingPrecautions:
+      'Ideal for daily morning consumption with a warm glass of milk. Suitable throughout pregnancy, postpartum recovery, lactation, and as a nourishing tonic for growing kids.',
+    nutritionalHighlights: [
+      'Bioavailable calcium and minerals from gond and nuts accelerate maternal recovery',
+      'Natural plant iron from dates and aliv supports blood volume restoration',
+      'Healthy fats from desi cow ghee and walnuts support infant brain development via breastmilk',
+      'Traditional warming herbs relieve postpartum aches and boost maternal metabolism'
+    ],
+    shape: 'Round Sphere',
+    expectedFlavour: 'Rich, comforting, spiced, and buttery',
+    expectedTexture: 'Crunchy, dense, and melt-in-the-mouth',
+    suggestedPositioning: 'Maternity & Postpartum Care'
   }
 ];
 
@@ -347,7 +541,7 @@ export const FAQS = [
   {
     question: 'What sweets does Jyotiraj offer?',
     answer:
-      'We make authentic, healthy Indian dry fruit sweets handcrafted with pure desi cow ghee and dates—with zero added white sugar. Our five signature sweets are: Premium Special Dry Fruits Laddu (11 ingredients), Dry Fruits Khajur Roll (with pure cow ghee), Kids Special Dry Fruit Laddu (with chia & flax seeds), Classic Dry Fruit Ladoo (with strength-giving Gond), and Dry Fruits Khajur Barfi.'
+      'We offer authentic, healthy Indian dry fruit sweets and traditional laddus handcrafted with pure desi cow ghee, dates, and jaggery—with zero white sugar. Our complete range includes: Premium Special Dry Fruits Laddu, Dry Fruits Khajur Roll, Kids Special Dry Fruit Laddu, Classic Dry Fruit Ladoo, Dry Fruits Khajur Barfi, Traditional Til Laddu, Crunchy Shengdana Laddu, and Megha Madhur Delivery Laddu (for pregnant & postpartum mothers).'
   },
   {
     question: 'Do you deliver dry fruit sweets to Wardha, Hinganghat, Nagpur, and Vidarbha?',

@@ -313,17 +313,20 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   box-shadow: var(--shadow-card);
 }
 
-/* 5-Column Compact Product Grid */
+/* Product Grid (Compact & refined 4 columns for 8 items) */
 .product-grid-5 {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 16px;
+  max-width: 1120px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1200px) {
   .product-grid-5 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
+    max-width: 860px;
   }
 }
 
