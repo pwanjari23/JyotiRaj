@@ -22,8 +22,8 @@ export const PRODUCTS: Product[] = [
     reviewCount: 64,
     provisionalPrice: {
       '250g': 380,
-      '500g': 740,
-      '1kg': 1450,
+      '500g': 750,
+      '1kg': 1500,
     },
     overview:
       'Our flagship royal sweet crafted with 11 superfood ingredients: Almonds, Cashews, Pistachios, Walnuts, Dates, Figs, Pumpkin Seeds, Sunflower Seeds, Sesame Seeds, Cardamom, and Nutmeg. Pure nutrition and energy in every bite.',
@@ -90,9 +90,9 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 42,
     provisionalPrice: {
-      '250g': 360,
-      '500g': 700,
-      '1kg': 1380,
+      '250g': 340,
+      '500g': 680,
+      '1kg': 1300,
     },
     overview:
       'Our Dry Fruits Khajur Roll is made with soft sweet dates, generous roasted almonds, cashews, pistachios, walnuts, pure cow ghee, and toasted sesame seeds, cut into attractive round slices.',
@@ -155,9 +155,9 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 51,
     provisionalPrice: {
-      '250g': 340,
-      '500g': 660,
-      '1kg': 1290,
+      '250g': 350,
+      '500g': 700,
+      '1kg': 1400,
     },
     overview:
       'A healthy, power-packed daily snack designed for growing kids and active families. Made with 9 wholesome ingredients: Dates, Almonds, Cashews, Pistachios, Walnuts, Pumpkin Seeds, Sunflower Seeds, Chia Seeds, and Flax Seeds — with absolutely no white sugar.',
@@ -224,8 +224,8 @@ export const PRODUCTS: Product[] = [
     reviewCount: 58,
     provisionalPrice: {
       '250g': 350,
-      '500g': 680,
-      '1kg': 1320,
+      '500g': 700,
+      '1kg': 1400,
     },
     overview:
       'Our Classic Dry Fruit Ladoo is a time-honored traditional recipe prepared with Cashews, Almonds, Walnuts, Pistachios, Pure Cow Ghee, Dates, Edible Gum (Gond), Dried Figs, and Golden Raisins. Renowned for natural strength, joint wellness, and warm comfort.',
@@ -290,9 +290,9 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 73,
     provisionalPrice: {
-      '250g': 370,
-      '500g': 720,
-      '1kg': 1420,
+      '250g': 350,
+      '500g': 680,
+      '1kg': 1350,
     },
     overview:
       'Delicious, melt-in-the-mouth barfi made from ripe dates, almonds, cashews, pistachios, walnuts, and dried figs, finished with a fine poppy seed rim. Packed in sealed transparent food-grade containers to maintain freshness across long distances.',
@@ -354,9 +354,9 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 46,
     provisionalPrice: {
-      '250g': 220,
-      '500g': 420,
-      '1kg': 800,
+      '250g': 120,
+      '500g': 240,
+      '1kg': 460,
     },
     overview:
       'Our traditional Til Laddu is handcrafted with premium toasted white sesame seeds, rich crushed nuts, and wholesome dates/jaggery bound with pure cow ghee. A cherished Maharashtrian winter specialty renowned for body warmth, natural iron, and bone health.',
@@ -417,9 +417,9 @@ export const PRODUCTS: Product[] = [
     rating: 4.9,
     reviewCount: 53,
     provisionalPrice: {
-      '250g': 200,
-      '500g': 380,
-      '1kg': 720,
+      '250g': 120,
+      '500g': 240,
+      '1kg': 460,
     },
     overview:
       'Our Shengdana Laddu is crafted from golden slow-roasted Vidarbha peanuts, coarsely ground and blended with traditional jaggery and pure cow ghee. Packed with high plant protein, healthy fats, and sustained natural energy.',
@@ -479,9 +479,9 @@ export const PRODUCTS: Product[] = [
     rating: 5.0,
     reviewCount: 92,
     provisionalPrice: {
-      '250g': 390,
-      '500g': 760,
-      '1kg': 1490,
+      '250g': 330,
+      '500g': 650,
+      '1kg': 1300,
     },
     overview:
       'Specially crafted by Jyoti Enterprises for pregnant and postpartum (बाळंतीण) mothers, as well as growing children. Handcrafted with pure cow ghee, edible gum (gond), dry fruits, and ayurvedic herbs to strengthen muscles, boost stamina, supply essential calcium, and support rapid postpartum recovery and healthy lactation.',
@@ -527,6 +527,133 @@ export const PRODUCTS: Product[] = [
     expectedFlavour: 'Rich, comforting, spiced, and buttery',
     expectedTexture: 'Crunchy, dense, and melt-in-the-mouth',
     suggestedPositioning: 'Maternity & Postpartum Care'
+  },
+  {
+    id: 'prod-9',
+    slug: 'methi-dry-fruits-sugar-free-laddu',
+    name: 'Jyotiraj Methi-Dry Fruits Sugar Free Laddu',
+    marathiName: 'ज्योतीराज मेथी ड्राय फ्रुट्स शुगर फ्री लाडू',
+    hindiName: 'ज्योतीराज मेथी ड्राई फ्रूट्स शुगर फ्री लड्डू',
+    subtitle: 'Pure Fenugreek & Whole Dry Fruits • Joint Health & Natural Stamina • Zero Sugar',
+    marathiSubtitle: 'अस्सल मेथी, डिंक, सुकामेवा आणि शुद्ध तुपाचा साखरेविना पौष्टिक लाडू',
+    hindiSubtitle: 'आयुर्वेदिक मेथी, सूखे मेवे और शुद्ध देसी घी का शुगर-फ्री लड्डू',
+    category: 'laddu',
+    categoryLabel: 'Ayurvedic Wellness Laddu',
+    image: '/assets/product_methi_laddu.jpg',
+    galleryImages: [
+      '/assets/product_methi_laddu.jpg',
+      '/assets/photo_methi_laddu.jpg'
+    ],
+    badge: 'Zero Sugar • Joint Wellness',
+    rating: 4.9,
+    reviewCount: 61,
+    provisionalPrice: {
+      '250g': 380,
+      '500g': 750,
+      '1kg': 1450,
+    },
+    overview:
+      'A revered Ayurvedic winter & wellness specialty formulated with slow-roasted organic fenugreek (methi) seeds, roasted edible gum (gond), crunchy almonds, cashews, pistachios, walnuts, and soft dates bound in 100% pure cow ghee. Specially prepared with zero added sugar to offer deep joint flexibility, body warmth, and steady vitality.',
+    marathiOverview:
+      'शुद्ध गाईच्या तुपात मंद आचेवर भाजलेली मेथी, डिंक, खजूर आणि भरपूर सुकामेवा वापरून तयार केलेला पारंपरिक पौष्टिक लाडू. साखरेचा शून्य वापर. सांधेदुखी, कंबरदुखी आणि हिवाळ्यातील आरोग्यासाठी अत्यंत गुणकारी.',
+    hindiOverview:
+      'धीमी आंच पर भुनी हुई मेथी, गोंद, खजूर और भरपूर सूखे मेवों से शुद्ध देसी घी में बना पारंपरिक शुगर-फ्री लड्डू। जोड़ों के दर्द, कमर दर्द और सर्दियों में शरीर को गर्माहट व ताकत देने में लाभकारी।',
+    websiteDescription:
+      'Experience the curative power of authentic Indian Ayurveda with Jyotiraj Methi-Dry Fruits Sugar Free Laddu. Meticulously slow-roasted in pure cow ghee to neutralize fenugreek bitterness and release a rich, nutty flavor, each laddu is packed with wholesome dates, crunchy whole nuts, and joint-nourishing edible gum. A beloved restorative sweet for elders, diabetic-conscious individuals, and winter wellness.',
+    proposedIngredients: [
+      { name: 'Organic Fenugreek Seeds (Methi)', hindiName: 'Joint & Metabolic Support', verified: true },
+      { name: 'Pure Cow Ghee', hindiName: 'Shuddha Desi Ghee', verified: true },
+      { name: 'Selected Dates (Khajur)', hindiName: '100% Natural Sweetener', verified: true },
+      { name: 'Edible Gum (Gond)', hindiName: 'Bone & Joint Strength', verified: true },
+      { name: 'Almonds & Walnuts', hindiName: 'Heart & Brain Nutrition', verified: true },
+      { name: 'Cashews & Pistachios', hindiName: 'Zinc & Healthy Fats', verified: true },
+      { name: 'Dry Ginger (Sunth) & Spices', hindiName: 'Warmth & Smooth Digestion', verified: true }
+    ],
+    sensoryProfile: {
+      taste: 'Warm, mildly nutty, and aromatic with a delicate herbal touch balanced by date sweetness.',
+      texture: 'Crisp and crunchy from roasted nuts and fried gond, bound into a smooth, buttery bite.',
+      aroma: 'Roasted fenugreek, pure desi cow ghee, warm ginger, and green cardamom.',
+      appearance: 'Golden-amber spherical laddus studded with whole almond and cashew fragments.'
+    },
+    highlights: [
+      '100% Zero Added White Sugar — Sweetened solely by natural dates',
+      'Slow-roasted in Pure Cow Ghee to temper fenugreek bitterness into a delicious nutty aroma',
+      'Enriched with traditional edible gum (gond) for joint flexibility and bone comfort',
+      'Trusted Ayurvedic home recipe for winter warmth and everyday vitality'
+    ],
+    allergens: ['Almonds', 'Cashews', 'Walnuts', 'Pistachios', 'Milk / Ghee'],
+    nutritionalHighlights: [
+      'Fenugreek seeds support healthy blood glucose regulation and digestive wellness',
+      'Edible gum (gond) and pure cow ghee provide vital lubrication for joints and bones',
+      'Dates provide smooth, sustained energy without refined sugar crashes'
+    ],
+    shape: 'Round Sphere',
+    expectedFlavour: 'Warm, nutty, subtly herbal, and pleasantly sweet',
+    expectedTexture: 'Crispy, dense, and melt-in-the-mouth',
+    suggestedPositioning: 'Ayurvedic Joint & Winter Wellness'
+  },
+  {
+    id: 'prod-10',
+    slug: 'anjeer-dry-fruits-barfi',
+    name: 'Jyotiraj Anjeer Dry Fruits Barfi',
+    marathiName: 'ज्योतीराज अंजीर ड्राय फ्रुट्स बर्फी',
+    hindiName: 'ज्योतीराज अंजीर ड्राई फ्रूट्स बर्फी',
+    subtitle: 'Sun-Ripened Figs & Rich Roasted Nuts • 100% Sugar-Free Royal Sweet',
+    marathiSubtitle: 'दर्जेदार सुके अंजीर, काजू, बदाम, पिस्ता आणि शुद्ध तुपाची शाही बर्फी',
+    hindiSubtitle: 'स्वादिष्ट अंजीर, काजू, बादाम और पिस्ता से बनी 100% शुगर-फ्री शाही बर्फी',
+    category: 'roll-barfi',
+    categoryLabel: 'Royal Fig Sweet',
+    image: '/assets/product_anjeer_barfi.jpg',
+    galleryImages: [
+      '/assets/product_anjeer_barfi.jpg',
+      '/assets/photo_anjeer_barfi.jpg'
+    ],
+    badge: '100% Natural Dried Figs',
+    rating: 5.0,
+    reviewCount: 78,
+    provisionalPrice: {
+      '250g': 350,
+      '500g': 700,
+      '1kg': 1400,
+    },
+    overview:
+      'A luxurious royal sweet handcrafted from sun-ripened premium dried figs (Anjeer), generously packed with slow-roasted Californian almonds, whole cashews, pistachios, and pure cow ghee. Zero added sugar, naturally sweet, and cut into neat artisan squares.',
+    marathiOverview:
+      'निवडक गोड सुके अंजीर, काजू, बदाम, पिस्ता आणि शुद्ध गाईच्या तुपाने बनवलेली अस्सल शाही अंजीर बर्फी. साखरेचा कणही न वापरता अंजिराच्या नैसर्गिक गोडव्यात तयार केलेली उत्कृष्ट मिठाई.',
+    hindiOverview:
+      'उत्कृष्ट पके हुए सूखे अंजीर, काजू, बादाम, पिस्ता और शुद्ध गाय के घी से तैयार शाही अंजीर बर्फी। बिना किसी अतिरिक्त चीनी के, प्राकृतिक मिठास और बेमिसाल स्वाद से भरपूर।',
+    websiteDescription:
+      'Indulge in royal sophistication with Jyotiraj Anjeer Dry Fruits Barfi. Made purely from the finest selected dried figs, this guilt-free dessert combines the delicate crunch of tiny fig seeds with rich roasted nuts and aromatic pure cow ghee. With zero added sugar, artificial sweeteners, or preservatives, it is the perfect healthy luxury for festive gifting, celebrations, and health-conscious sweet lovers.',
+    proposedIngredients: [
+      { name: 'Selected Dried Figs (Anjeer)', hindiName: 'Premium Fig Base', verified: true },
+      { name: 'Almonds (Badam)', hindiName: 'Roasted Almond Slivers', verified: true },
+      { name: 'Cashews (Kaju)', hindiName: 'Crunchy Kaju Pieces', verified: true },
+      { name: 'Pistachios (Pista)', hindiName: 'Green Iranian Pista', verified: true },
+      { name: 'Pure Cow Ghee', hindiName: 'Shuddha Desi Ghee', verified: true },
+      { name: 'Green Cardamom (Elaichi)', hindiName: 'Fragrant Spices', verified: true }
+    ],
+    sensoryProfile: {
+      taste: 'Luscious, honeyed fig flavor intertwined with rich roasted nuts and comforting cow ghee.',
+      texture: 'Soft and chewy with the delightful natural pop of fig seeds and crunch of roasted whole nuts.',
+      aroma: 'Caramelized dried figs, fragrant toasted pistachios, and pure desi cow ghee.',
+      appearance: 'Elegant square slices showcasing a vibrant mosaic of whole almonds and emerald pistachio slivers.'
+    },
+    highlights: [
+      'Crafted from 100% sun-ripened premium dried figs — Zero refined white sugar',
+      'Packed with whole roasted almonds, cashews, and bright green pistachios',
+      'Naturally high in dietary fiber, iron, calcium, and potassium',
+      'Artisan square cuts packed in airtight food-grade protective containers'
+    ],
+    allergens: ['Almonds', 'Cashews', 'Pistachios', 'Milk / Ghee'],
+    nutritionalHighlights: [
+      'Dried figs are an exceptional source of soluble fiber and essential dietary minerals',
+      'Natural potassium and magnesium support healthy blood pressure and heart wellness',
+      'Clean plant protein and antioxidants from almonds and pistachios provide lasting vitality'
+    ],
+    shape: 'Square Barfi Slices',
+    expectedFlavour: 'Rich fig caramel, nutty, and buttery',
+    expectedTexture: 'Soft, chewy with crunchy nut mosaic',
+    suggestedPositioning: 'Ultra-Premium Royal Sweet'
   }
 ];
 
@@ -541,7 +668,7 @@ export const FAQS = [
   {
     question: 'What sweets does Jyotiraj offer?',
     answer:
-      'We offer authentic, healthy Indian dry fruit sweets and traditional laddus handcrafted with pure desi cow ghee, dates, and jaggery—with zero white sugar. Our complete range includes: Premium Special Dry Fruits Laddu, Dry Fruits Khajur Roll, Kids Special Dry Fruit Laddu, Classic Dry Fruit Ladoo, Dry Fruits Khajur Barfi, Traditional Til Laddu, Crunchy Shengdana Laddu, and Megha Madhur Delivery Laddu (for pregnant & postpartum mothers).'
+      'We offer authentic, healthy Indian dry fruit sweets and traditional laddus handcrafted with pure desi cow ghee, dates, and jaggery—with zero white sugar. Our complete range includes: Premium Special Dry Fruits Laddu, Dry Fruits Khajur Roll, Kids Special Dry Fruit Laddu, Classic Dry Fruit Ladoo, Dry Fruits Khajur Barfi, Traditional Til Laddu, Crunchy Shengdana Laddu, Megha Madhur Delivery Laddu, Ayurvedic Methi-Dry Fruits Sugar Free Laddu, and Royal Anjeer Dry Fruits Barfi.'
   },
   {
     question: 'Do you deliver dry fruit sweets to Wardha, Hinganghat, Nagpur, and Vidarbha?',

@@ -16,9 +16,10 @@ export interface PapadProduct {
   rating: number;
   reviewCount: number;
   provisionalPrice: {
-    '100g': number;
+    '100g'?: number;
     '200g': number;
     '500g': number;
+    '1kg'?: number;
   };
   overview: string;
   marathiOverview: string;
@@ -48,9 +49,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 5.0,
     reviewCount: 48,
     provisionalPrice: {
-      '100g': 60,
-      '200g': 110,
+      '100g': 65,
+      '200g': 130,
       '500g': 260,
+      '1kg': 600,
     },
     overview:
       'A legendary Maharashtrian sun-dried delicacy made by extracting natural fermented wheat starch (चिक), slow-cooked into a silky dough and extruded into delicate white coils, then sun-dried. When deep-fried, it blossoms into an extraordinarily light, snow-white, crispy spiral.',
@@ -81,9 +83,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 4.9,
     reviewCount: 52,
     provisionalPrice: {
-      '100g': 65,
-      '200g': 120,
-      '500g': 280,
+      '100g': 45,
+      '200g': 90,
+      '500g': 220,
+      '1kg': 430,
     },
     overview:
       'Sun-dried wholesome golden dumplings prepared from stone-ground yellow moong dal whipped with asafoetida (hing), cumin, and gentle Indian spices. An essential pantry staple for crafting authentic Vidarbhi Vadi Rassa (curry), pulao, and nutritious daily sabzis.',
@@ -114,9 +117,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 4.9,
     reviewCount: 41,
     provisionalPrice: {
-      '100g': 55,
-      '200g': 100,
-      '500g': 240,
+      '100g': 65,
+      '200g': 130,
+      '500g': 325,
+      '1kg': 600,
     },
     overview:
       'Classic homemade sun-dried papads made from whole wheat flour, cumin seeds, and traditional papad khar. Crispy, golden, and satisfying whether gently roasted over an open flame or deep-fried in peanut oil.',
@@ -147,9 +151,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 5.0,
     reviewCount: 65,
     provisionalPrice: {
-      '100g': 60,
-      '200g': 115,
-      '500g': 270,
+      '100g': 45,
+      '200g': 90,
+      '500g': 225,
+      '1kg': 400,
     },
     overview:
       'Specially crafted for religious fasting (Ekadashi, Navratri, Shravan, and Mahashivratri). Made with prime-quality soaked tapioca pearls and pure Sendha Namak (rock salt). Expands into airy, translucent-white crisps that melt on your tongue.',
@@ -182,7 +187,8 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     provisionalPrice: {
       '100g': 65,
       '200g': 125,
-      '500g': 290,
+      '500g': 320,
+      '1kg': 600,
     },
     overview:
       'A beloved festive combination of boiled mashed potatoes and translucent sabudana pearls, spiced gently with green chilli and Sendha Namak. Fried into a golden, savory, irresistibly crunchy teatime and fasting treat.',
@@ -213,9 +219,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 4.9,
     reviewCount: 39,
     provisionalPrice: {
-      '100g': 55,
-      '200g': 105,
-      '500g': 250,
+      '100g': 60,
+      '200g': 120,
+      '500g': 280,
+      '1kg': 550,
     },
     overview:
       'A true rustic Maharashtrian heritage snack made from cooked whole jowar (sorghum) dough, studded with toasted sesame seeds and mild cumin. Incredibly light, naturally rich in dietary fiber, and delightfully crunchy when fried or roasted.',
@@ -246,9 +253,10 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 4.8,
     reviewCount: 34,
     provisionalPrice: {
-      '100g': 60,
-      '200g': 110,
-      '500g': 260,
+      '100g': 65,
+      '200g': 125,
+      '500g': 320,
+      '1kg': 600,
     },
     overview:
       'Artisanal hand-pulled whole wheat strands meticulously prepared for traditional Maharashtra festivals like Nag Panchami and Diwali. Can be boiled into sweet jaggery-milk kheer or pan-tossed with mustard and chillies for a savory breakfast.',
@@ -279,9 +287,9 @@ export const PAPAD_PRODUCTS: PapadProduct[] = [
     rating: 5.0,
     reviewCount: 46,
     provisionalPrice: {
-      '100g': 55,
-      '200g': 100,
-      '500g': 240,
+      '200g': 40,
+      '500g': 100,
+      '1kg': 180,
     },
     overview:
       'Pure whole wheat fine vermicelli extruded and sun-dried under direct Vidarbha sun without any industrial maida or chemical preservatives. Cooks in minutes into royal Cardamom-infused Shevaya Kheer or savory breakfast Upma.',

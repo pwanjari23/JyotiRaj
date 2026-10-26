@@ -19,12 +19,12 @@ export const PapadQuickViewModal: React.FC<PapadQuickViewModalProps> = ({
   language,
   currency = 'INR',
 }) => {
-  const [selectedPack, setSelectedPack] = useState<'100g' | '200g' | '500g'>('200g');
+  const [selectedPack, setSelectedPack] = useState<'100g' | '200g' | '500g' | '1kg'>('200g');
   const [activeImage, setActiveImage] = useState<'food' | 'label'>('food');
 
   if (!product) return null;
 
-  const currentPrice = product.provisionalPrice[selectedPack];
+  const currentPrice = product.provisionalPrice[selectedPack] ?? product.provisionalPrice['200g'] ?? 0;
   const displayName = getPapadName(product, language);
   const displaySubtitle = getPapadSubtitle(product, language);
   const displayOverview = getPapadOverview(product, language);
@@ -260,32 +260,36 @@ export const PapadQuickViewModal: React.FC<PapadQuickViewModalProps> = ({
                 <div style={{ fontSize: '12px', fontWeight: 700, color: 'var(--color-espresso-brown)', marginBottom: '8px' }}>
                   {language === 'mr' ? 'पॅक वजन निवडा:' : language === 'hi' ? 'पैक वजन चुनें:' : 'Select Pack Size:'}
                 </div>
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  {(['100g', '200g', '500g'] as const).map((pack) => (
-                    <button
-                      key={pack}
-                      type="button"
-                      onClick={() => setSelectedPack(pack)}
-                      style={{
-                        flex: 1,
-                        padding: '8px 10px',
-                        borderRadius: '8px',
-                        border: selectedPack === pack ? '2px solid var(--color-royal-maroon)' : '1px solid var(--color-border)',
-                        backgroundColor: selectedPack === pack ? 'rgba(107, 18, 15, 0.05)' : '#FFF',
-                        color: selectedPack === pack ? 'var(--color-royal-maroon)' : 'var(--color-espresso-brown)',
-                        fontWeight: 700,
-                        fontSize: '12.5px',
-                        cursor: 'pointer',
-                        textAlign: 'center',
-                        transition: 'all 0.2s'
-                      }}
-                    >
-                      <div>{pack}</div>
-                      <div style={{ fontSize: '11px', color: selectedPack === pack ? 'var(--color-royal-maroon)' : 'var(--color-muted-text)', marginTop: '2px' }}>
-                        {formatPrice(product.provisionalPrice[pack], currency)}
-                      </div>
-                    </button>
-                  ))}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(70px, 1fr))', gap: '8px' }}>
+                  {(['100g', '200g', '500g', '1kg'] as const)
+                    .filter((pack) => product.provisionalPrice[pack] !== undefined)
+                    .map((pack) => {
+                      const packPrice = product.provisionalPrice[pack] ?? 0;
+                      return (
+                        <button
+                          key={pack}
+                          type="button"
+                          onClick={() => setSelectedPack(pack)}
+                          style={{
+                            padding: '8px 10px',
+                            borderRadius: '8px',
+                            border: selectedPack === pack ? '2px solid var(--color-royal-maroon)' : '1px solid var(--color-border)',
+                            backgroundColor: selectedPack === pack ? 'rgba(107, 18, 15, 0.05)' : '#FFF',
+                            color: selectedPack === pack ? 'var(--color-royal-maroon)' : 'var(--color-espresso-brown)',
+                            fontWeight: 700,
+                            fontSize: '12.5px',
+                            cursor: 'pointer',
+                            textAlign: 'center',
+                            transition: 'all 0.2s'
+                          }}
+                        >
+                          <div>{pack}</div>
+                          <div style={{ fontSize: '11px', color: selectedPack === pack ? 'var(--color-royal-maroon)' : 'var(--color-muted-text)', marginTop: '2px' }}>
+                            {formatPrice(packPrice, currency)}
+                          </div>
+                        </button>
+                      );
+                    })}
                 </div>
               </div>
             </div>
